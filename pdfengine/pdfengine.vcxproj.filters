@@ -1,0 +1,786 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="pdf">
+      <UniqueIdentifier>{2eab5612-91d1-4e04-94b1-c8e74ebe33aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty">
+      <UniqueIdentifier>{ccc07955-e083-451b-aa61-13bd4aa501b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libfreetype">
+      <UniqueIdentifier>{eda6d814-ace0-4b64-8881-7bac4801fa6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libfreetype\base">
+      <UniqueIdentifier>{0f490132-2124-4b37-9787-f9fabbfb9639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libgif">
+      <UniqueIdentifier>{517c090f-48af-4dc6-a294-dc69514c5650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libjbig2dec">
+      <UniqueIdentifier>{0bc3475b-4119-4146-910d-af3945389412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libjpeg">
+      <UniqueIdentifier>{a139bc14-99aa-41c8-887a-896a7fe38629}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libjpeg2">
+      <UniqueIdentifier>{577df586-9114-420a-9f3a-11add77022e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libtiff">
+      <UniqueIdentifier>{8e5088b9-eeea-4ee9-aa7d-f475ccea678b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libz">
+      <UniqueIdentifier>{b5eaf485-6450-44b7-bd53-2202df130e0c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pdf\pdf-internal.h">
+      <Filter>pdf</Filter>
+    </ClInclude>
+    <ClInclude Include="pdf\pdf.h">
+      <Filter>pdf</Filter>
+    </ClInclude>
+    <ClInclude Include="pdf\pdf_data_encodings.h">
+      <Filter>pdf</Filter>
+    </ClInclude>
+    <ClInclude Include="pdf\pdf_data_glyphlist.h">
+      <Filter>pdf</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pdf\pdf_annot.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_base_context.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_base_error.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_base_geometry.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_base_getopt.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_base_hash.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_base_memory.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_base_object.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_base_string.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_base_time.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_cmap.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_cmap_load.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_cmap_parse.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_cmap_table.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_colorspace.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_crypt.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_crypt_aes.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_crypt_arc4.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_crypt_md5.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_crypt_sha2.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_dev_bbox.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_dev_html.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_dev_list.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_dev_null.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_dev_rectlist.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_dev_text.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_doc_document.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_doc_link.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_doc_outline.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_draw_affine.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_draw_blend.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_draw_device.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_draw_edge.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_draw_glyph.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_draw_mesh.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_draw_paint.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_draw_path.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_draw_simple_scale.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_draw_unpack.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_encoding.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_filt_basic.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_filt_dctd.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_filt_faxd.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_filt_flate.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_filt_jbig2d.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_filt_lzwd.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_filt_predict.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_font.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_fontfile.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_function.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_image.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_image_bmp.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_image_gif.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_image_jpeg.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_image_jpx.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_image_md5.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_image_png.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_image_save.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_image_tiff.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_interpret.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_lex.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_metrics.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_nametree.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_outline.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_page.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_parse.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_pattern.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_repair.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_res_bitmap.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_res_colorspace.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_res_font.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_res_halftone.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_res_path.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_res_pixmap.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_res_shade.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_res_store.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_res_text.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_shade.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_stm_buffer.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_stm_open.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_stm_read.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_store.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_stream.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_type3.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_unicode.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_xobject.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="pdf\pdf_xref.c">
+      <Filter>pdf</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\cff\cff.c">
+      <Filter>thirdparty\libfreetype</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\psaux\psaux.c">
+      <Filter>thirdparty\libfreetype</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\pshinter\pshinter.c">
+      <Filter>thirdparty\libfreetype</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\psnames\psnames.c">
+      <Filter>thirdparty\libfreetype</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\raster\raster.c">
+      <Filter>thirdparty\libfreetype</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\sfnt\sfnt.c">
+      <Filter>thirdparty\libfreetype</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\smooth\smooth.c">
+      <Filter>thirdparty\libfreetype</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\truetype\truetype.c">
+      <Filter>thirdparty\libfreetype</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\type1\type1.c">
+      <Filter>thirdparty\libfreetype</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\cid\type1cid.c">
+      <Filter>thirdparty\libfreetype</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftbase.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftbbox.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftbitmap.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftgasp.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftglyph.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftinit.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftstroke.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftsynth.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftsystem.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\fttype1.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftxf86.c">
+      <Filter>thirdparty\libfreetype\base</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libgif\dgif_lib.c">
+      <Filter>thirdparty\libgif</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libgif\egif_lib.c">
+      <Filter>thirdparty\libgif</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libgif\gif_err.c">
+      <Filter>thirdparty\libgif</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libgif\gif_hash.c">
+      <Filter>thirdparty\libgif</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libgif\gifalloc.c">
+      <Filter>thirdparty\libgif</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libgif\quantize.c">
+      <Filter>thirdparty\libgif</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_arith.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_arith_iaid.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_arith_int.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_generic.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_halftone.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_huffman.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_image.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_metadata.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_mmr.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_page.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_refinement.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_segment.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_symbol_dict.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_text.c">
+      <Filter>thirdparty\libjbig2dec</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jaricom.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcapimin.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcapistd.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcarith.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jccoefct.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jccolor.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcdctmgr.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jchuff.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcinit.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcmainct.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcmarker.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcmaster.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcomapi.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcparam.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcprepct.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jcsample.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jctrans.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdapimin.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdapistd.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdarith.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdatadst.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdatasrc.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdcoefct.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdcolor.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jddctmgr.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdhuff.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdinput.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdmainct.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdmarker.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdmaster.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdmerge.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdpostct.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdsample.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jdtrans.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jerror.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jfdctflt.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jfdctfst.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jfdctint.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jidctflt.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jidctfst.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jidctint.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jmemmgr.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jmemnobs.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jquant1.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jquant2.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg\jutils.c">
+      <Filter>thirdparty\libjpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\bio.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\cidx_manager.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\cio.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\dwt.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\event.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\image.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\j2k.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\j2k_lib.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\jp2.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\jpt.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\mct.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\mqc.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\openjpeg.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\phix_manager.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\pi.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\ppix_manager.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\raw.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\t1.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\t2.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\tcd.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\tgt.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\thix_manager.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libjpeg2\tpix_manager.c">
+      <Filter>thirdparty\libjpeg2</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_aux.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_close.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_codec.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_color.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_compress.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_dir.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_dirinfo.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_dirread.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_dirwrite.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_dumpmode.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_error.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_extension.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_fax3.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_fax3sm.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_flush.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_getimage.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_jbig.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_jpeg.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_luv.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_lzw.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_next.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_ojpeg.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_open.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_packbits.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_pixarlog.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_predict.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_print.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_read.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_strip.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_swab.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_thunder.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_tile.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_version.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_warning.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_win32.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_write.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libtiff\tif_zip.c">
+      <Filter>thirdparty\libtiff</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libz\adler32.c">
+      <Filter>thirdparty\libz</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libz\compress.c">
+      <Filter>thirdparty\libz</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libz\crc32.c">
+      <Filter>thirdparty\libz</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libz\deflate.c">
+      <Filter>thirdparty\libz</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libz\inffast.c">
+      <Filter>thirdparty\libz</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libz\inflate.c">
+      <Filter>thirdparty\libz</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libz\inftrees.c">
+      <Filter>thirdparty\libz</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libz\trees.c">
+      <Filter>thirdparty\libz</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libz\uncompr.c">
+      <Filter>thirdparty\libz</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdparty\libz\zutil.c">
+      <Filter>thirdparty\libz</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

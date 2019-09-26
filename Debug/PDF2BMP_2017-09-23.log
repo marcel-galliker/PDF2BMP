@@ -1,0 +1,183 @@
+[2017-09-23 19:01:48]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 19:02:27]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST1.pdfллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллл???????З?o
+[2017-09-23 19:05:46]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 19:06:24]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST1.pdf) Command Received
+[2017-09-23 19:06:24]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 19:06:51]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 19:07:19]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 19:07:25]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST2.pdf) Command Received
+[2017-09-23 19:07:25]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 19:07:25]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 19:07:48]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 19:07:48]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST2.pdf) Command Received
+[2017-09-23 19:07:48]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 19:07:51]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 19:07:54]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 19:07:54]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST3.PDF) Command Received
+[2017-09-23 19:07:54]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 19:08:00]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 19:57:47]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 19:57:47]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST3.PDF) Command Received
+[2017-09-23 19:57:47]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 19:58:12]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 20:26:05]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 20:26:05]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST3.PDF) Command Received
+[2017-09-23 20:26:05]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 20:26:05]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 20:26:49]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 20:26:49]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST1.pdf) Command Received
+[2017-09-23 20:26:49]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 20:26:49]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 20:26:55]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 20:26:55]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST1.pdf) Command Received
+[2017-09-23 20:26:55]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 20:26:55]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 20:27:13]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 20:27:17]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST2.pdf) Command Received
+[2017-09-23 20:27:17]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 20:27:18]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 20:27:43]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 20:27:43]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST2.pdf) Command Received
+[2017-09-23 20:27:43]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 20:27:43]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 20:28:42]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 20:28:42]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST3.PDF) Command Received
+[2017-09-23 20:28:42]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 20:28:42]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 20:29:53]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 20:29:53]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST1.pdf) Command Received
+[2017-09-23 20:29:53]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 20:29:53]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 20:30:49]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 20:30:49]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST1.pdf) Command Received
+[2017-09-23 20:30:49]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 20:30:49]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 20:31:03]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 20:31:03]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST3.PDF) Command Received
+[2017-09-23 20:31:03]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 20:31:04]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 20:33:03]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 20:33:03]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\GTTEST1.pdf) Command Received
+[2017-09-23 20:33:03]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 20:33:03]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 21:39:58]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 21:39:58]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-09-23 21:39:58]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-09-23 21:39:59]  LOG_NOTICE   127.0.0.1 Client: Resolution width(600) Command Received
+[2017-09-23 21:39:59]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-09-23 21:39:59]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-09-23 21:39:59]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-09-23 21:39:59]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\GTTEST3.pdf) Command Received
+[2017-09-23 21:39:59]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 21:39:59]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\pdf\temp) Command Received
+[2017-09-23 21:39:59]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2017-09-23 21:40:01]  LOG_NOTICE   127.0.0.1 Client: Convert (8) pages starting at page (0) 
+--> target (bmp0.bmp) 
+ Command Received
+[2017-09-23 21:40:36]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=2
+
+[2017-09-23 21:40:36]  LOG_NOTICE   127.0.0.1 Client: Convert (8) pages starting at page (8) 
+--> target (bmp8.bmp) 
+ Command Received
+[2017-09-23 21:40:48]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-09-23 21:40:48]  LOG_NOTICE   127.0.0.1 Client: Convert (8) pages starting at page (16) 
+--> target (bmp16.bmp) 
+ Command Received
+[2017-09-23 21:40:54]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-09-23 22:10:27]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 22:20:56]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 22:20:56]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-09-23 22:20:56]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-09-23 22:20:57]  LOG_NOTICE   127.0.0.1 Client: Resolution width(600) Command Received
+[2017-09-23 22:20:57]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-09-23 22:20:57]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-09-23 22:20:57]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-09-23 22:20:57]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\GTTEST3.pdf) Command Received
+[2017-09-23 22:20:57]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 22:20:57]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\pdf\temp) Command Received
+[2017-09-23 22:20:57]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2017-09-23 22:20:59]  LOG_NOTICE   127.0.0.1 Client: Convert (8) pages starting at page (0) 
+--> target (bmp0.bmp) 
+ Command Received
+[2017-09-23 22:21:10]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=2
+
+[2017-09-23 22:21:10]  LOG_NOTICE   127.0.0.1 Client: Convert (8) pages starting at page (8) 
+--> target (bmp8.bmp) 
+ Command Received
+[2017-09-23 22:21:45]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-09-23 22:21:45]  LOG_NOTICE   127.0.0.1 Client: Convert (8) pages starting at page (16) 
+--> target (bmp16.bmp) 
+ Command Received
+[2017-09-23 22:21:48]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-09-23 22:21:48]  LOG_NOTICE   127.0.0.1 Client: Convert (8) pages starting at page (24) 
+--> target (bmp24.bmp) 
+ Command Received
+[2017-09-23 22:21:51]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-09-23 22:21:51]  LOG_NOTICE   127.0.0.1 Client: Convert (8) pages starting at page (32) 
+--> target (bmp32.bmp) 
+ Command Received
+[2017-09-23 22:21:59]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-09-23 22:25:51]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 22:25:51]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\EditorGT\data\pdf\barcode test-vdp.pdf) Command Received
+[2017-09-23 22:25:58]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 22:25:58]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 22:26:24]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 22:26:24]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-09-23 22:26:24]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-09-23 22:26:25]  LOG_NOTICE   127.0.0.1 Client: Resolution width(600) Command Received
+[2017-09-23 22:26:25]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-09-23 22:26:25]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-09-23 22:26:25]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-09-23 22:26:25]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\barcode test-vdp.pdf) Command Received
+[2017-09-23 22:26:51]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 22:28:49]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-09-23 22:28:49]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-09-23 22:28:49]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-09-23 22:28:50]  LOG_NOTICE   127.0.0.1 Client: Resolution width(600) Command Received
+[2017-09-23 22:28:50]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-09-23 22:28:50]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-09-23 22:28:50]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-09-23 22:28:51]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\barcode test-vdp.pdf) Command Received
+[2017-09-23 22:28:56]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-09-23 22:29:59]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-09-23 22:29:59]  LOG_NOTICE   127.0.0.1 Client Disconnected

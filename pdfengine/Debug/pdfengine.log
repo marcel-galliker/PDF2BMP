@@ -1,0 +1,584 @@
+﻿Build started 5/30/2019 10:17:10 PM.
+     1>Project "C:\PDF2Bmp\Src\pdfengine\pdfengine.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\pdfengine.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "Debug\pdfengine.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       PreBuildEvent:
+         Description: Generate CMap and Font source files
+         generate.bat
+         :VCEnd
+         fontdump.c
+         cmapdump.c
+     1>scripts/cmapdump.c(86): warning C4133: 'function' : incompatible types - from 'char *' to 'const wchar_t *'
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Iscripts /Ipdf /Ithirdparty\libgif /Ithirdparty\libjbig2dec /Ithirdparty\libjpeg /Ithirdparty\libjpeg2 /Ithirdparty\libtiff /Ithirdparty\libz /Ithirdparty\libfreetype\include /Zi /nologo /W3 /WX- /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D FT2_BUILD_LIBRARY /D OPJ_STATIC /D DEBUG=1 /D "verbose=-1" /D _MBCS /Gm- /EHsc /MTd /GS- /fp:precise /Zc:wchar_t- /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc90.pdb" /Gd /TC /analyze- /errorReport:prompt pdf\pdf_annot.c pdf\pdf_base_context.c pdf\pdf_base_error.c pdf\pdf_base_geometry.c pdf\pdf_base_getopt.c pdf\pdf_base_hash.c pdf\pdf_base_memory.c pdf\pdf_base_object.c pdf\pdf_base_string.c pdf\pdf_base_time.c pdf\pdf_cmap.c pdf\pdf_cmap_load.c pdf\pdf_cmap_parse.c pdf\pdf_cmap_table.c pdf\pdf_colorspace.c pdf\pdf_crypt.c pdf\pdf_crypt_aes.c pdf\pdf_crypt_arc4.c pdf\pdf_crypt_md5.c pdf\pdf_crypt_sha2.c pdf\pdf_dev_bbox.c pdf\pdf_dev_html.c pdf\pdf_dev_list.c pdf\pdf_dev_null.c pdf\pdf_dev_rectlist.c pdf\pdf_dev_text.c pdf\pdf_doc_document.c pdf\pdf_doc_link.c pdf\pdf_doc_outline.c pdf\pdf_draw_affine.c pdf\pdf_draw_blend.c pdf\pdf_draw_device.c pdf\pdf_draw_edge.c pdf\pdf_draw_glyph.c pdf\pdf_draw_mesh.c pdf\pdf_draw_paint.c pdf\pdf_draw_path.c pdf\pdf_draw_simple_scale.c pdf\pdf_draw_unpack.c pdf\pdf_encoding.c pdf\pdf_filt_basic.c pdf\pdf_filt_dctd.c pdf\pdf_filt_faxd.c pdf\pdf_filt_flate.c pdf\pdf_filt_jbig2d.c pdf\pdf_filt_lzwd.c pdf\pdf_filt_predict.c pdf\pdf_font.c pdf\pdf_fontfile.c pdf\pdf_function.c pdf\pdf_image.c pdf\pdf_image_bmp.c pdf\pdf_image_gif.c pdf\pdf_image_jpeg.c pdf\pdf_image_jpx.c pdf\pdf_image_md5.c pdf\pdf_image_png.c pdf\pdf_image_save.c pdf\pdf_image_tiff.c pdf\pdf_interpret.c pdf\pdf_lex.c pdf\pdf_metrics.c pdf\pdf_nametree.c pdf\pdf_outline.c pdf\pdf_page.c pdf\pdf_parse.c pdf\pdf_pattern.c pdf\pdf_repair.c pdf\pdf_res_bitmap.c pdf\pdf_res_colorspace.c pdf\pdf_res_font.c pdf\pdf_res_halftone.c pdf\pdf_res_path.c pdf\pdf_res_pixmap.c pdf\pdf_res_shade.c pdf\pdf_res_store.c pdf\pdf_res_text.c pdf\pdf_shade.c pdf\pdf_stm_buffer.c pdf\pdf_stm_open.c pdf\pdf_stm_read.c pdf\pdf_store.c pdf\pdf_stream.c pdf\pdf_type3.c pdf\pdf_unicode.c pdf\pdf_xobject.c pdf\pdf_xref.c thirdparty\libfreetype\src\cff\cff.c thirdparty\libfreetype\src\psaux\psaux.c thirdparty\libfreetype\src\pshinter\pshinter.c thirdparty\libfreetype\src\psnames\psnames.c thirdparty\libfreetype\src\raster\raster.c thirdparty\libfreetype\src\sfnt\sfnt.c thirdparty\libfreetype\src\smooth\smooth.c thirdparty\libfreetype\src\truetype\truetype.c thirdparty\libfreetype\src\type1\type1.c thirdparty\libfreetype\src\cid\type1cid.c thirdparty\libfreetype\src\base\ftbase.c thirdparty\libfreetype\src\base\ftbbox.c thirdparty\libfreetype\src\base\ftbitmap.c thirdparty\libfreetype\src\base\ftgasp.c thirdparty\libfreetype\src\base\ftglyph.c thirdparty\libfreetype\src\base\ftinit.c thirdparty\libfreetype\src\base\ftstroke.c thirdparty\libfreetype\src\base\ftsynth.c thirdparty\libfreetype\src\base\ftsystem.c thirdparty\libfreetype\src\base\fttype1.c thirdparty\libfreetype\src\base\ftxf86.c thirdparty\libgif\dgif_lib.c thirdparty\libgif\egif_lib.c thirdparty\libgif\gif_err.c thirdparty\libgif\gif_hash.c thirdparty\libgif\gifalloc.c thirdparty\libgif\quantize.c thirdparty\libjbig2dec\jbig2.c thirdparty\libjbig2dec\jbig2_arith.c thirdparty\libjbig2dec\jbig2_arith_iaid.c thirdparty\libjbig2dec\jbig2_arith_int.c thirdparty\libjbig2dec\jbig2_generic.c thirdparty\libjbig2dec\jbig2_halftone.c thirdparty\libjbig2dec\jbig2_huffman.c thirdparty\libjbig2dec\jbig2_image.c thirdparty\libjbig2dec\jbig2_metadata.c thirdparty\libjbig2dec\jbig2_mmr.c thirdparty\libjbig2dec\jbig2_page.c thirdparty\libjbig2dec\jbig2_refinement.c thirdparty\libjbig2dec\jbig2_segment.c thirdparty\libjbig2dec\jbig2_symbol_dict.c thirdparty\libjbig2dec\jbig2_text.c thirdparty\libjpeg\jaricom.c thirdparty\libjpeg\jcapimin.c thirdparty\libjpeg\jcapistd.c thirdparty\libjpeg\jcarith.c thirdparty\libjpeg\jccoefct.c thirdparty\libjpeg\jccolor.c thirdparty\libjpeg\jcdctmgr.c thirdparty\libjpeg\jchuff.c thirdparty\libjpeg\jcinit.c thirdparty\libjpeg\jcmainct.c thirdparty\libjpeg\jcmarker.c thirdparty\libjpeg\jcmaster.c thirdparty\libjpeg\jcomapi.c thirdparty\libjpeg\jcparam.c thirdparty\libjpeg\jcprepct.c thirdparty\libjpeg\jcsample.c thirdparty\libjpeg\jctrans.c thirdparty\libjpeg\jdapimin.c thirdparty\libjpeg\jdapistd.c thirdparty\libjpeg\jdarith.c thirdparty\libjpeg\jdatadst.c thirdparty\libjpeg\jdatasrc.c thirdparty\libjpeg\jdcoefct.c thirdparty\libjpeg\jdcolor.c thirdparty\libjpeg\jddctmgr.c thirdparty\libjpeg\jdhuff.c thirdparty\libjpeg\jdinput.c thirdparty\libjpeg\jdmainct.c thirdparty\libjpeg\jdmarker.c thirdparty\libjpeg\jdmaster.c thirdparty\libjpeg\jdmerge.c thirdparty\libjpeg\jdpostct.c thirdparty\libjpeg\jdsample.c thirdparty\libjpeg\jdtrans.c thirdparty\libjpeg\jerror.c thirdparty\libjpeg\jfdctflt.c thirdparty\libjpeg\jfdctfst.c thirdparty\libjpeg\jfdctint.c thirdparty\libjpeg\jidctflt.c thirdparty\libjpeg\jidctfst.c thirdparty\libjpeg\jidctint.c thirdparty\libjpeg\jmemmgr.c thirdparty\libjpeg\jmemnobs.c thirdparty\libjpeg\jquant1.c thirdparty\libjpeg\jquant2.c thirdparty\libjpeg\jutils.c thirdparty\libjpeg2\bio.c thirdparty\libjpeg2\cidx_manager.c thirdparty\libjpeg2\cio.c thirdparty\libjpeg2\dwt.c thirdparty\libjpeg2\event.c thirdparty\libjpeg2\image.c thirdparty\libjpeg2\j2k.c thirdparty\libjpeg2\j2k_lib.c thirdparty\libjpeg2\jp2.c thirdparty\libjpeg2\jpt.c thirdparty\libjpeg2\mct.c thirdparty\libjpeg2\mqc.c thirdparty\libjpeg2\openjpeg.c thirdparty\libjpeg2\phix_manager.c thirdparty\libjpeg2\pi.c thirdparty\libjpeg2\ppix_manager.c thirdparty\libjpeg2\raw.c thirdparty\libjpeg2\t1.c thirdparty\libjpeg2\t2.c thirdparty\libjpeg2\tcd.c thirdparty\libjpeg2\tgt.c thirdparty\libjpeg2\thix_manager.c thirdparty\libjpeg2\tpix_manager.c thirdparty\libtiff\tif_aux.c thirdparty\libtiff\tif_close.c thirdparty\libtiff\tif_codec.c thirdparty\libtiff\tif_color.c thirdparty\libtiff\tif_compress.c thirdparty\libtiff\tif_dir.c thirdparty\libtiff\tif_dirinfo.c thirdparty\libtiff\tif_dirread.c thirdparty\libtiff\tif_dirwrite.c thirdparty\libtiff\tif_dumpmode.c thirdparty\libtiff\tif_error.c thirdparty\libtiff\tif_extension.c thirdparty\libtiff\tif_fax3.c thirdparty\libtiff\tif_fax3sm.c thirdparty\libtiff\tif_flush.c thirdparty\libtiff\tif_getimage.c thirdparty\libtiff\tif_jbig.c thirdparty\libtiff\tif_jpeg.c thirdparty\libtiff\tif_luv.c thirdparty\libtiff\tif_lzw.c thirdparty\libtiff\tif_next.c thirdparty\libtiff\tif_ojpeg.c thirdparty\libtiff\tif_open.c thirdparty\libtiff\tif_packbits.c thirdparty\libtiff\tif_pixarlog.c thirdparty\libtiff\tif_predict.c thirdparty\libtiff\tif_print.c thirdparty\libtiff\tif_read.c thirdparty\libtiff\tif_strip.c thirdparty\libtiff\tif_swab.c thirdparty\libtiff\tif_thunder.c thirdparty\libtiff\tif_tile.c thirdparty\libtiff\tif_version.c thirdparty\libtiff\tif_warning.c thirdparty\libtiff\tif_win32.c thirdparty\libtiff\tif_write.c thirdparty\libtiff\tif_zip.c thirdparty\libz\adler32.c thirdparty\libz\compress.c thirdparty\libz\crc32.c thirdparty\libz\deflate.c thirdparty\libz\inffast.c thirdparty\libz\inflate.c thirdparty\libz\inftrees.c thirdparty\libz\trees.c thirdparty\libz\uncompr.c thirdparty\libz\zutil.c
+         pdf_annot.c
+         pdf_base_context.c
+         pdf_base_error.c
+         pdf_base_geometry.c
+         pdf_base_getopt.c
+         pdf_base_hash.c
+         pdf_base_memory.c
+         pdf_base_object.c
+         pdf_base_string.c
+         pdf_base_time.c
+         pdf_cmap.c
+         pdf_cmap_load.c
+         pdf_cmap_parse.c
+         pdf_cmap_table.c
+         pdf_colorspace.c
+         pdf_crypt.c
+         pdf_crypt_aes.c
+         pdf_crypt_arc4.c
+         pdf_crypt_md5.c
+         pdf_crypt_sha2.c
+         Generating Code...
+         Compiling...
+         pdf_dev_bbox.c
+         pdf_dev_html.c
+         pdf_dev_list.c
+         pdf_dev_null.c
+         pdf_dev_rectlist.c
+         pdf_dev_text.c
+         pdf_doc_document.c
+         pdf_doc_link.c
+         pdf_doc_outline.c
+         pdf_draw_affine.c
+         pdf_draw_blend.c
+         pdf_draw_device.c
+         pdf_draw_edge.c
+         pdf_draw_glyph.c
+         pdf_draw_mesh.c
+         pdf_draw_paint.c
+         pdf_draw_path.c
+         pdf_draw_simple_scale.c
+         pdf_draw_unpack.c
+         pdf_encoding.c
+         Generating Code...
+         Compiling...
+         pdf_filt_basic.c
+         pdf_filt_dctd.c
+         pdf_filt_faxd.c
+         pdf_filt_flate.c
+         pdf_filt_jbig2d.c
+         pdf_filt_lzwd.c
+         pdf_filt_predict.c
+         pdf_font.c
+         pdf_fontfile.c
+         pdf_function.c
+         pdf_image.c
+         pdf_image_bmp.c
+     1>pdf\pdf_image_bmp.c(82): warning C4101: 'ybitFlag' : unreferenced local variable
+     1>pdf\pdf_image_bmp.c(80): warning C4101: 'nIndexY' : unreferenced local variable
+     1>pdf\pdf_image_bmp.c(82): warning C4101: 'xbitFlag' : unreferenced local variable
+     1>pdf\pdf_image_bmp.c(68): warning C4101: 'pPtrNextXPt' : unreferenced local variable
+     1>pdf\pdf_image_bmp.c(80): warning C4101: 'nIndexX' : unreferenced local variable
+         pdf_image_gif.c
+         pdf_image_jpeg.c
+     1>pdf\pdf_image_jpeg.c(192): warning C4018: '<' : signed/unsigned mismatch
+         pdf_image_jpx.c
+     1>pdf\pdf_image_jpx.c(3): warning C4005: 'OPJ_STATIC' : macro redefinition
+                 command-line arguments :  see previous definition of 'OPJ_STATIC'
+         pdf_image_md5.c
+         pdf_image_png.c
+         pdf_image_save.c
+     1>pdf\pdf_image_save.c(22): warning C4133: 'function' : incompatible types - from 'char [1024]' to 'wchar_t *'
+         pdf_image_tiff.c
+         pdf_interpret.c
+         Generating Code...
+     1>c:\pdf2bmp\src\pdfengine\pdf\pdf_image_bmp.c(280): warning C4716: 'base_write_bmp' : must return a value
+         Compiling...
+         pdf_lex.c
+         pdf_metrics.c
+         pdf_nametree.c
+         pdf_outline.c
+         pdf_page.c
+         pdf_parse.c
+         pdf_pattern.c
+         pdf_repair.c
+         pdf_res_bitmap.c
+         pdf_res_colorspace.c
+         pdf_res_font.c
+         pdf_res_halftone.c
+         pdf_res_path.c
+         pdf_res_pixmap.c
+         pdf_res_shade.c
+         pdf_res_store.c
+         pdf_res_text.c
+         pdf_shade.c
+         pdf_stm_buffer.c
+         pdf_stm_open.c
+         Generating Code...
+         Compiling...
+         pdf_stm_read.c
+         pdf_store.c
+         pdf_stream.c
+         pdf_type3.c
+         pdf_unicode.c
+         pdf_xobject.c
+         pdf_xref.c
+         cff.c
+         psaux.c
+         pshinter.c
+         psnames.c
+         raster.c
+         sfnt.c
+         smooth.c
+         truetype.c
+         type1.c
+         type1cid.c
+         ftbase.c
+         ftbbox.c
+         ftbitmap.c
+         Generating Code...
+         Compiling...
+         ftgasp.c
+         ftglyph.c
+         ftinit.c
+         ftstroke.c
+         ftsynth.c
+         ftsystem.c
+         fttype1.c
+         ftxf86.c
+         dgif_lib.c
+         egif_lib.c
+         gif_err.c
+         gif_hash.c
+     1>thirdparty\libgif\gif_hash.c(20): warning C4013: 'malloc' undefined; assuming extern returning int
+         gifalloc.c
+         quantize.c
+     1>thirdparty\libgif\quantize.c(115): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libgif\quantize.c(123): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libgif\quantize.c(134): warning C4244: '=' : conversion from 'long' to 'GifByteType', possible loss of data
+     1>thirdparty\libgif\quantize.c(135): warning C4244: '=' : conversion from 'long' to 'GifByteType', possible loss of data
+     1>thirdparty\libgif\quantize.c(136): warning C4244: '=' : conversion from 'long' to 'GifByteType', possible loss of data
+         jbig2.c
+     1>thirdparty\libjbig2dec\jbig2.c(400): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2.c(403): warning C4018: '>=' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2.c(410): warning C4018: '<' : signed/unsigned mismatch
+         jbig2_arith.c
+         jbig2_arith_iaid.c
+         jbig2_arith_int.c
+         jbig2_generic.c
+     1>thirdparty\libjbig2dec\jbig2_generic.c(758): warning C4018: '>' : signed/unsigned mismatch
+         jbig2_halftone.c
+     1>thirdparty\libjbig2dec\jbig2_halftone.c(106): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+     1>thirdparty\libjbig2dec\jbig2_halftone.c(236): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_halftone.c(301): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_halftone.c(315): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_halftone.c(325): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_halftone.c(326): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_halftone.c(329): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_halftone.c(339): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_halftone.c(407): warning C4018: '>' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_halftone.c(442): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+         Compiling...
+         jbig2_huffman.c
+         jbig2_image.c
+         jbig2_metadata.c
+         jbig2_mmr.c
+     1>thirdparty\libjbig2dec\jbig2_mmr.c(41): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_mmr.c(53): warning C4018: '<' : signed/unsigned mismatch
+         jbig2_page.c
+         jbig2_refinement.c
+         jbig2_segment.c
+     1>thirdparty\libjbig2dec\jbig2_segment.c(66): warning C4018: '>' : signed/unsigned mismatch
+         jbig2_symbol_dict.c
+     1>thirdparty\libjbig2dec\jbig2_symbol_dict.c(558): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_symbol_dict.c(672): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_symbol_dict.c(709): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_symbol_dict.c(715): warning C4018: '>' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_symbol_dict.c(947): warning C4018: '>' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_symbol_dict.c(953): warning C4018: '>' : signed/unsigned mismatch
+         jbig2_text.c
+     1>thirdparty\libjbig2dec\jbig2_text.c(50): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libjbig2dec\jbig2_text.c(260): warning C4018: '>=' : signed/unsigned mismatch
+         jaricom.c
+         jcapimin.c
+         jcapistd.c
+         jcarith.c
+         jccoefct.c
+         jccolor.c
+         jcdctmgr.c
+         jchuff.c
+         jcinit.c
+         jcmainct.c
+         jcmarker.c
+         Generating Code...
+         Compiling...
+         jcmaster.c
+         jcomapi.c
+         jcparam.c
+         jcprepct.c
+         jcsample.c
+         jctrans.c
+         jdapimin.c
+         jdapistd.c
+         jdarith.c
+         jdatadst.c
+         jdatasrc.c
+         jdcoefct.c
+         jdcolor.c
+         jddctmgr.c
+         jdhuff.c
+         jdinput.c
+         jdmainct.c
+         jdmarker.c
+         jdmaster.c
+         jdmerge.c
+         Generating Code...
+         Compiling...
+         jdpostct.c
+         jdsample.c
+         jdtrans.c
+         jerror.c
+         jfdctflt.c
+         jfdctfst.c
+         jfdctint.c
+         jidctflt.c
+         jidctfst.c
+         jidctint.c
+         jmemmgr.c
+         jmemnobs.c
+         jquant1.c
+         jquant2.c
+         jutils.c
+         bio.c
+         cidx_manager.c
+         cio.c
+         dwt.c
+         event.c
+         Generating Code...
+         Compiling...
+         image.c
+         j2k.c
+         j2k_lib.c
+         jp2.c
+         jpt.c
+         mct.c
+         mqc.c
+         openjpeg.c
+         phix_manager.c
+         pi.c
+         ppix_manager.c
+         raw.c
+         t1.c
+         t2.c
+         tcd.c
+         tgt.c
+         thix_manager.c
+         tpix_manager.c
+         tif_aux.c
+         tif_close.c
+         Generating Code...
+         Compiling...
+         tif_codec.c
+         tif_color.c
+         tif_compress.c
+         tif_dir.c
+         tif_dirinfo.c
+         tif_dirread.c
+         tif_dirwrite.c
+         tif_dumpmode.c
+         tif_error.c
+         tif_extension.c
+         tif_fax3.c
+         tif_fax3sm.c
+         tif_flush.c
+         tif_getimage.c
+         tif_jbig.c
+         tif_jpeg.c
+         tif_luv.c
+         tif_lzw.c
+         tif_next.c
+         tif_ojpeg.c
+         Generating Code...
+         Compiling...
+         tif_open.c
+         tif_packbits.c
+     1>thirdparty\libtiff\tif_packbits.c(149): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libtiff\tif_packbits.c(180): warning C4018: '<' : signed/unsigned mismatch
+     1>thirdparty\libtiff\tif_packbits.c(193): warning C4018: '<' : signed/unsigned mismatch
+         tif_pixarlog.c
+         tif_predict.c
+         tif_print.c
+         tif_read.c
+         tif_strip.c
+         tif_swab.c
+         tif_thunder.c
+         tif_tile.c
+         tif_version.c
+         tif_warning.c
+         tif_win32.c
+         tif_write.c
+         tif_zip.c
+         adler32.c
+         compress.c
+         crc32.c
+         deflate.c
+         inffast.c
+         Generating Code...
+         Compiling...
+         inflate.c
+         inftrees.c
+         trees.c
+         uncompr.c
+         zutil.c
+         Generating Code...
+       Lib:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\PDF2Bmp\Src\lib\pdfengine.lib" /NOLOGO Debug\pdf_annot.obj
+         Debug\pdf_base_context.obj
+         Debug\pdf_base_error.obj
+         Debug\pdf_base_geometry.obj
+         Debug\pdf_base_getopt.obj
+         Debug\pdf_base_hash.obj
+         Debug\pdf_base_memory.obj
+         Debug\pdf_base_object.obj
+         Debug\pdf_base_string.obj
+         Debug\pdf_base_time.obj
+         Debug\pdf_cmap.obj
+         Debug\pdf_cmap_load.obj
+         Debug\pdf_cmap_parse.obj
+         Debug\pdf_cmap_table.obj
+         Debug\pdf_colorspace.obj
+         Debug\pdf_crypt.obj
+         Debug\pdf_crypt_aes.obj
+         Debug\pdf_crypt_arc4.obj
+         Debug\pdf_crypt_md5.obj
+         Debug\pdf_crypt_sha2.obj
+         Debug\pdf_dev_bbox.obj
+         Debug\pdf_dev_html.obj
+         Debug\pdf_dev_list.obj
+         Debug\pdf_dev_null.obj
+         Debug\pdf_dev_rectlist.obj
+         Debug\pdf_dev_text.obj
+         Debug\pdf_doc_document.obj
+         Debug\pdf_doc_link.obj
+         Debug\pdf_doc_outline.obj
+         Debug\pdf_draw_affine.obj
+         Debug\pdf_draw_blend.obj
+         Debug\pdf_draw_device.obj
+         Debug\pdf_draw_edge.obj
+         Debug\pdf_draw_glyph.obj
+         Debug\pdf_draw_mesh.obj
+         Debug\pdf_draw_paint.obj
+         Debug\pdf_draw_path.obj
+         Debug\pdf_draw_simple_scale.obj
+         Debug\pdf_draw_unpack.obj
+         Debug\pdf_encoding.obj
+         Debug\pdf_filt_basic.obj
+         Debug\pdf_filt_dctd.obj
+         Debug\pdf_filt_faxd.obj
+         Debug\pdf_filt_flate.obj
+         Debug\pdf_filt_jbig2d.obj
+         Debug\pdf_filt_lzwd.obj
+         Debug\pdf_filt_predict.obj
+         Debug\pdf_font.obj
+         Debug\pdf_fontfile.obj
+         Debug\pdf_function.obj
+         Debug\pdf_image.obj
+         Debug\pdf_image_bmp.obj
+         Debug\pdf_image_gif.obj
+         Debug\pdf_image_jpeg.obj
+         Debug\pdf_image_jpx.obj
+         Debug\pdf_image_md5.obj
+         Debug\pdf_image_png.obj
+         Debug\pdf_image_save.obj
+         Debug\pdf_image_tiff.obj
+         Debug\pdf_interpret.obj
+         Debug\pdf_lex.obj
+         Debug\pdf_metrics.obj
+         Debug\pdf_nametree.obj
+         Debug\pdf_outline.obj
+         Debug\pdf_page.obj
+         Debug\pdf_parse.obj
+         Debug\pdf_pattern.obj
+         Debug\pdf_repair.obj
+         Debug\pdf_res_bitmap.obj
+         Debug\pdf_res_colorspace.obj
+         Debug\pdf_res_font.obj
+         Debug\pdf_res_halftone.obj
+         Debug\pdf_res_path.obj
+         Debug\pdf_res_pixmap.obj
+         Debug\pdf_res_shade.obj
+         Debug\pdf_res_store.obj
+         Debug\pdf_res_text.obj
+         Debug\pdf_shade.obj
+         Debug\pdf_stm_buffer.obj
+         Debug\pdf_stm_open.obj
+         Debug\pdf_stm_read.obj
+         Debug\pdf_store.obj
+         Debug\pdf_stream.obj
+         Debug\pdf_type3.obj
+         Debug\pdf_unicode.obj
+         Debug\pdf_xobject.obj
+         Debug\pdf_xref.obj
+         Debug\cff.obj
+         Debug\psaux.obj
+         Debug\pshinter.obj
+         Debug\psnames.obj
+         Debug\raster.obj
+         Debug\sfnt.obj
+         Debug\smooth.obj
+         Debug\truetype.obj
+         Debug\type1.obj
+         Debug\type1cid.obj
+         Debug\ftbase.obj
+         Debug\ftbbox.obj
+         Debug\ftbitmap.obj
+         Debug\ftgasp.obj
+         Debug\ftglyph.obj
+         Debug\ftinit.obj
+         Debug\ftstroke.obj
+         Debug\ftsynth.obj
+         Debug\ftsystem.obj
+         Debug\fttype1.obj
+         Debug\ftxf86.obj
+         Debug\dgif_lib.obj
+         Debug\egif_lib.obj
+         Debug\gif_err.obj
+         Debug\gif_hash.obj
+         Debug\gifalloc.obj
+         Debug\quantize.obj
+         Debug\jbig2.obj
+         Debug\jbig2_arith.obj
+         Debug\jbig2_arith_iaid.obj
+         Debug\jbig2_arith_int.obj
+         Debug\jbig2_generic.obj
+         Debug\jbig2_halftone.obj
+         Debug\jbig2_huffman.obj
+         Debug\jbig2_image.obj
+         Debug\jbig2_metadata.obj
+         Debug\jbig2_mmr.obj
+         Debug\jbig2_page.obj
+         Debug\jbig2_refinement.obj
+         Debug\jbig2_segment.obj
+         Debug\jbig2_symbol_dict.obj
+         Debug\jbig2_text.obj
+         Debug\jaricom.obj
+         Debug\jcapimin.obj
+         Debug\jcapistd.obj
+         Debug\jcarith.obj
+         Debug\jccoefct.obj
+         Debug\jccolor.obj
+         Debug\jcdctmgr.obj
+         Debug\jchuff.obj
+         Debug\jcinit.obj
+         Debug\jcmainct.obj
+         Debug\jcmarker.obj
+         Debug\jcmaster.obj
+         Debug\jcomapi.obj
+         Debug\jcparam.obj
+         Debug\jcprepct.obj
+         Debug\jcsample.obj
+         Debug\jctrans.obj
+         Debug\jdapimin.obj
+         Debug\jdapistd.obj
+         Debug\jdarith.obj
+         Debug\jdatadst.obj
+         Debug\jdatasrc.obj
+         Debug\jdcoefct.obj
+         Debug\jdcolor.obj
+         Debug\jddctmgr.obj
+         Debug\jdhuff.obj
+         Debug\jdinput.obj
+         Debug\jdmainct.obj
+         Debug\jdmarker.obj
+         Debug\jdmaster.obj
+         Debug\jdmerge.obj
+         Debug\jdpostct.obj
+         Debug\jdsample.obj
+         Debug\jdtrans.obj
+         Debug\jerror.obj
+         Debug\jfdctflt.obj
+         Debug\jfdctfst.obj
+         Debug\jfdctint.obj
+         Debug\jidctflt.obj
+         Debug\jidctfst.obj
+         Debug\jidctint.obj
+         Debug\jmemmgr.obj
+         Debug\jmemnobs.obj
+         Debug\jquant1.obj
+         Debug\jquant2.obj
+         Debug\jutils.obj
+         Debug\bio.obj
+         Debug\cidx_manager.obj
+         Debug\cio.obj
+         Debug\dwt.obj
+         Debug\event.obj
+         Debug\image.obj
+         Debug\j2k.obj
+         Debug\j2k_lib.obj
+         Debug\jp2.obj
+         Debug\jpt.obj
+         Debug\mct.obj
+         Debug\mqc.obj
+         Debug\openjpeg.obj
+         Debug\phix_manager.obj
+         Debug\pi.obj
+         Debug\ppix_manager.obj
+         Debug\raw.obj
+         Debug\t1.obj
+         Debug\t2.obj
+         Debug\tcd.obj
+         Debug\tgt.obj
+         Debug\thix_manager.obj
+         Debug\tpix_manager.obj
+         Debug\tif_aux.obj
+         Debug\tif_close.obj
+         Debug\tif_codec.obj
+         Debug\tif_color.obj
+         Debug\tif_compress.obj
+         Debug\tif_dir.obj
+         Debug\tif_dirinfo.obj
+         Debug\tif_dirread.obj
+         Debug\tif_dirwrite.obj
+         Debug\tif_dumpmode.obj
+         Debug\tif_error.obj
+         Debug\tif_extension.obj
+         Debug\tif_fax3.obj
+         Debug\tif_fax3sm.obj
+         Debug\tif_flush.obj
+         Debug\tif_getimage.obj
+         Debug\tif_jbig.obj
+         Debug\tif_jpeg.obj
+         Debug\tif_luv.obj
+         Debug\tif_lzw.obj
+         Debug\tif_next.obj
+         Debug\tif_ojpeg.obj
+         Debug\tif_open.obj
+         Debug\tif_packbits.obj
+         Debug\tif_pixarlog.obj
+         Debug\tif_predict.obj
+         Debug\tif_print.obj
+         Debug\tif_read.obj
+         Debug\tif_strip.obj
+         Debug\tif_swab.obj
+         Debug\tif_thunder.obj
+         Debug\tif_tile.obj
+         Debug\tif_version.obj
+         Debug\tif_warning.obj
+         Debug\tif_win32.obj
+         Debug\tif_write.obj
+         Debug\tif_zip.obj
+         Debug\adler32.obj
+         Debug\compress.obj
+         Debug\crc32.obj
+         Debug\deflate.obj
+         Debug\inffast.obj
+         Debug\inflate.obj
+         Debug\inftrees.obj
+         Debug\trees.obj
+         Debug\uncompr.obj
+         Debug\zutil.obj
+         pdfengine.vcxproj -> C:\PDF2Bmp\Src\lib\pdfengine.lib
+       FinalizeBuildStatus:
+         Deleting file "Debug\pdfengine.unsuccessfulbuild".
+         Touching "Debug\pdfengine.lastbuildstate".
+     1>Done Building Project "C:\PDF2Bmp\Src\pdfengine\pdfengine.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:35.03

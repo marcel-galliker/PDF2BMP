@@ -1,0 +1,236 @@
+[2018-07-10 14:01:19]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 14:01:19]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 14:01:19]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 14:01:20]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\barcode test-vdp.pdf) Command Received
+[2018-07-10 14:02:23]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2018-07-10 14:02:23]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\temp) Command Received
+[2018-07-10 14:02:23]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2018-07-10 14:02:23]  LOG_NOTICE   127.0.0.1 Client: Resolution width(600) Command Received
+[2018-07-10 14:02:23]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2018-07-10 14:02:23]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2018-07-10 14:02:23]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2018-07-10 14:02:23]  LOG_NOTICE   127.0.0.1 Client: Page width(3464) Command Received
+[2018-07-10 14:02:23]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=6  flag=0
+
+[2018-07-10 14:02:23]  LOG_NOTICE   127.0.0.1 Client: Page height(2133) Command Received
+[2018-07-10 14:02:23]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=7  flag=0
+
+[2018-07-10 14:02:23]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 14:04:15]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 14:04:15]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 14:04:16]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 14:04:16]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 14:04:16]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 14:04:29]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 14:04:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=2
+
+[2018-07-10 14:04:46]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2018-07-10 14:05:13]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 14:05:14]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 14:05:14]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 14:05:14]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 14:05:15]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 14:05:28]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 14:05:28]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=2
+
+[2018-07-10 14:05:30]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2018-07-10 14:06:00]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2018-07-10 14:06:21]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 14:06:21]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 14:06:22]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 14:06:22]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\barcode test-vdp.pdf) Command Received
+[2018-07-10 14:06:40]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2018-07-10 14:06:40]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\temp) Command Received
+[2018-07-10 14:06:40]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2018-07-10 14:06:40]  LOG_NOTICE   127.0.0.1 Client: Resolution width(600) Command Received
+[2018-07-10 14:06:40]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2018-07-10 14:06:40]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2018-07-10 14:06:40]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2018-07-10 14:06:40]  LOG_NOTICE   127.0.0.1 Client: Page width(3464) Command Received
+[2018-07-10 14:06:40]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=6  flag=0
+
+[2018-07-10 14:06:40]  LOG_NOTICE   127.0.0.1 Client: Page height(2133) Command Received
+[2018-07-10 14:06:40]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=7  flag=0
+
+[2018-07-10 14:06:54]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 15:04:05]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 15:04:05]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:04:06]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:04:06]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\barcode test-vdp.pdf) Command Received
+[2018-07-10 15:04:10]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2018-07-10 15:04:10]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\temp) Command Received
+[2018-07-10 15:04:10]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2018-07-10 15:04:10]  LOG_NOTICE   127.0.0.1 Client: Resolution width(600) Command Received
+[2018-07-10 15:04:10]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2018-07-10 15:04:10]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2018-07-10 15:04:10]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2018-07-10 15:04:11]  LOG_NOTICE   127.0.0.1 Client: Page width(3464) Command Received
+[2018-07-10 15:04:11]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=6  flag=0
+
+[2018-07-10 15:04:11]  LOG_NOTICE   127.0.0.1 Client: Page height(2133) Command Received
+[2018-07-10 15:04:11]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=7  flag=0
+
+[2018-07-10 15:04:21]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 15:05:29]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 15:05:30]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:05:30]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:05:30]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:05:31]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:05:43]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 15:05:43]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=2
+
+[2018-07-10 15:06:01]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2018-07-10 15:06:28]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 15:06:28]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:06:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:06:29]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:06:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:06:42]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 15:06:42]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=2
+
+[2018-07-10 15:06:52]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2018-07-10 15:07:25]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 15:07:25]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:07:25]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:07:26]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\barcode test-vdp.pdf) Command Received
+[2018-07-10 15:07:30]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2018-07-10 15:07:30]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\temp) Command Received
+[2018-07-10 15:07:30]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2018-07-10 15:07:30]  LOG_NOTICE   127.0.0.1 Client: Resolution width(600) Command Received
+[2018-07-10 15:07:30]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2018-07-10 15:07:30]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2018-07-10 15:07:30]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2018-07-10 15:07:30]  LOG_NOTICE   127.0.0.1 Client: Page width(6102) Command Received
+[2018-07-10 15:07:30]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=6  flag=0
+
+[2018-07-10 15:07:30]  LOG_NOTICE   127.0.0.1 Client: Page height(2133) Command Received
+[2018-07-10 15:07:30]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=7  flag=0
+
+[2018-07-10 15:07:40]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 15:08:42]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 15:08:42]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:08:43]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:08:43]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:08:43]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:08:56]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 15:08:56]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=2
+
+[2018-07-10 15:09:02]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2018-07-10 15:09:22]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 15:09:23]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:09:23]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:09:23]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:09:24]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:09:37]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 15:09:37]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=2
+
+[2018-07-10 15:09:41]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2018-07-10 15:10:50]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 15:10:51]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:10:53]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:10:53]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:10:53]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:11:05]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 15:11:05]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=2
+
+[2018-07-10 15:11:10]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2018-07-10 15:11:46]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 15:11:47]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:11:47]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:11:50]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\barcode test-vdp.pdf) Command Received
+[2018-07-10 15:15:24]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 15:15:25]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:15:25]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:15:25]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:15:25]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:15:39]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received
+[2018-07-10 15:15:39]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=2
+
+[2018-07-10 15:17:00]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2018-07-10 15:17:23]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2018-07-10 15:17:24]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2018-07-10 15:17:24]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2018-07-10 15:17:25]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\barcode test-vdp.pdf) Command Received
+[2018-07-10 15:17:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2018-07-10 15:17:29]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\temp) Command Received
+[2018-07-10 15:17:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2018-07-10 15:17:29]  LOG_NOTICE   127.0.0.1 Client: Resolution width(600) Command Received
+[2018-07-10 15:17:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2018-07-10 15:17:29]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2018-07-10 15:17:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2018-07-10 15:17:29]  LOG_NOTICE   127.0.0.1 Client: Page width(3464) Command Received
+[2018-07-10 15:17:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=6  flag=0
+
+[2018-07-10 15:17:29]  LOG_NOTICE   127.0.0.1 Client: Page height(2133) Command Received
+[2018-07-10 15:17:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=7  flag=0
+
+[2018-07-10 15:17:39]  LOG_NOTICE   127.0.0.1 Client: Convert (15) pages starting at page (2) 
+--> target (bmp0.bmp) 
+ Command Received

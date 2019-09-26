@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5F615F91-DFF8-4F05-BF48-6222B7D86519}</ProjectGuid>
+    <RootNamespace>pdfengine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Message>Generate CMap and Font source files</Message>
+      <Command>generate.bat</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>scripts;pdf;thirdparty\libgif;thirdparty\libjbig2dec;thirdparty\libjpeg;thirdparty\libjpeg2;thirdparty\libtiff;thirdparty\libz;thirdparty\libfreetype\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;FT2_BUILD_LIBRARY;OPJ_STATIC;DEBUG=1;verbose=-1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc90.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Message>Generate CMap and Font source files</Message>
+      <Command>generate.bat</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>scripts;pdf;thirdparty\libgif;thirdparty\libjbig2dec;thirdparty\libjpeg;thirdparty\libjpeg2;thirdparty\libtiff;thirdparty\libz;thirdparty\libfreetype\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";verbose=-1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="pdf\pdf-internal.h" />
+    <ClInclude Include="pdf\pdf.h" />
+    <ClInclude Include="pdf\pdf_data_encodings.h" />
+    <ClInclude Include="pdf\pdf_data_glyphlist.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pdf\pdf_annot.c" />
+    <ClCompile Include="pdf\pdf_base_context.c" />
+    <ClCompile Include="pdf\pdf_base_error.c" />
+    <ClCompile Include="pdf\pdf_base_geometry.c" />
+    <ClCompile Include="pdf\pdf_base_getopt.c" />
+    <ClCompile Include="pdf\pdf_base_hash.c" />
+    <ClCompile Include="pdf\pdf_base_memory.c" />
+    <ClCompile Include="pdf\pdf_base_object.c" />
+    <ClCompile Include="pdf\pdf_base_string.c" />
+    <ClCompile Include="pdf\pdf_base_time.c" />
+    <ClCompile Include="pdf\pdf_cmap.c" />
+    <ClCompile Include="pdf\pdf_cmap_load.c" />
+    <ClCompile Include="pdf\pdf_cmap_parse.c" />
+    <ClCompile Include="pdf\pdf_cmap_table.c" />
+    <ClCompile Include="pdf\pdf_colorspace.c" />
+    <ClCompile Include="pdf\pdf_crypt.c" />
+    <ClCompile Include="pdf\pdf_crypt_aes.c" />
+    <ClCompile Include="pdf\pdf_crypt_arc4.c" />
+    <ClCompile Include="pdf\pdf_crypt_md5.c" />
+    <ClCompile Include="pdf\pdf_crypt_sha2.c" />
+    <ClCompile Include="pdf\pdf_dev_bbox.c" />
+    <ClCompile Include="pdf\pdf_dev_html.c" />
+    <ClCompile Include="pdf\pdf_dev_list.c" />
+    <ClCompile Include="pdf\pdf_dev_null.c" />
+    <ClCompile Include="pdf\pdf_dev_rectlist.c" />
+    <ClCompile Include="pdf\pdf_dev_text.c" />
+    <ClCompile Include="pdf\pdf_doc_document.c" />
+    <ClCompile Include="pdf\pdf_doc_link.c" />
+    <ClCompile Include="pdf\pdf_doc_outline.c" />
+    <ClCompile Include="pdf\pdf_draw_affine.c" />
+    <ClCompile Include="pdf\pdf_draw_blend.c" />
+    <ClCompile Include="pdf\pdf_draw_device.c" />
+    <ClCompile Include="pdf\pdf_draw_edge.c" />
+    <ClCompile Include="pdf\pdf_draw_glyph.c" />
+    <ClCompile Include="pdf\pdf_draw_mesh.c" />
+    <ClCompile Include="pdf\pdf_draw_paint.c" />
+    <ClCompile Include="pdf\pdf_draw_path.c" />
+    <ClCompile Include="pdf\pdf_draw_simple_scale.c" />
+    <ClCompile Include="pdf\pdf_draw_unpack.c" />
+    <ClCompile Include="pdf\pdf_encoding.c" />
+    <ClCompile Include="pdf\pdf_filt_basic.c" />
+    <ClCompile Include="pdf\pdf_filt_dctd.c" />
+    <ClCompile Include="pdf\pdf_filt_faxd.c" />
+    <ClCompile Include="pdf\pdf_filt_flate.c" />
+    <ClCompile Include="pdf\pdf_filt_jbig2d.c" />
+    <ClCompile Include="pdf\pdf_filt_lzwd.c" />
+    <ClCompile Include="pdf\pdf_filt_predict.c" />
+    <ClCompile Include="pdf\pdf_font.c" />
+    <ClCompile Include="pdf\pdf_fontfile.c" />
+    <ClCompile Include="pdf\pdf_function.c" />
+    <ClCompile Include="pdf\pdf_image.c" />
+    <ClCompile Include="pdf\pdf_image_bmp.c" />
+    <ClCompile Include="pdf\pdf_image_gif.c" />
+    <ClCompile Include="pdf\pdf_image_jpeg.c" />
+    <ClCompile Include="pdf\pdf_image_jpx.c" />
+    <ClCompile Include="pdf\pdf_image_md5.c" />
+    <ClCompile Include="pdf\pdf_image_png.c" />
+    <ClCompile Include="pdf\pdf_image_save.c" />
+    <ClCompile Include="pdf\pdf_image_tiff.c" />
+    <ClCompile Include="pdf\pdf_interpret.c" />
+    <ClCompile Include="pdf\pdf_lex.c" />
+    <ClCompile Include="pdf\pdf_metrics.c" />
+    <ClCompile Include="pdf\pdf_nametree.c" />
+    <ClCompile Include="pdf\pdf_outline.c" />
+    <ClCompile Include="pdf\pdf_page.c" />
+    <ClCompile Include="pdf\pdf_parse.c" />
+    <ClCompile Include="pdf\pdf_pattern.c" />
+    <ClCompile Include="pdf\pdf_repair.c" />
+    <ClCompile Include="pdf\pdf_res_bitmap.c" />
+    <ClCompile Include="pdf\pdf_res_colorspace.c" />
+    <ClCompile Include="pdf\pdf_res_font.c" />
+    <ClCompile Include="pdf\pdf_res_halftone.c" />
+    <ClCompile Include="pdf\pdf_res_path.c" />
+    <ClCompile Include="pdf\pdf_res_pixmap.c" />
+    <ClCompile Include="pdf\pdf_res_shade.c" />
+    <ClCompile Include="pdf\pdf_res_store.c" />
+    <ClCompile Include="pdf\pdf_res_text.c" />
+    <ClCompile Include="pdf\pdf_shade.c" />
+    <ClCompile Include="pdf\pdf_stm_buffer.c" />
+    <ClCompile Include="pdf\pdf_stm_open.c" />
+    <ClCompile Include="pdf\pdf_stm_read.c" />
+    <ClCompile Include="pdf\pdf_store.c" />
+    <ClCompile Include="pdf\pdf_stream.c" />
+    <ClCompile Include="pdf\pdf_type3.c" />
+    <ClCompile Include="pdf\pdf_unicode.c" />
+    <ClCompile Include="pdf\pdf_xobject.c" />
+    <ClCompile Include="pdf\pdf_xref.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\cff\cff.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\psaux\psaux.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\pshinter\pshinter.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\psnames\psnames.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\raster\raster.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\sfnt\sfnt.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\smooth\smooth.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\truetype\truetype.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\type1\type1.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\cid\type1cid.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftbase.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftbbox.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftbitmap.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftgasp.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftglyph.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftinit.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftstroke.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftsynth.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftsystem.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\fttype1.c" />
+    <ClCompile Include="thirdparty\libfreetype\src\base\ftxf86.c" />
+    <ClCompile Include="thirdparty\libgif\dgif_lib.c" />
+    <ClCompile Include="thirdparty\libgif\egif_lib.c" />
+    <ClCompile Include="thirdparty\libgif\gif_err.c" />
+    <ClCompile Include="thirdparty\libgif\gif_hash.c" />
+    <ClCompile Include="thirdparty\libgif\gifalloc.c" />
+    <ClCompile Include="thirdparty\libgif\quantize.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_arith.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_arith_iaid.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_arith_int.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_generic.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_halftone.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_huffman.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_image.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_metadata.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_mmr.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_page.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_refinement.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_segment.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_symbol_dict.c" />
+    <ClCompile Include="thirdparty\libjbig2dec\jbig2_text.c" />
+    <ClCompile Include="thirdparty\libjpeg\jaricom.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcapimin.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcapistd.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcarith.c" />
+    <ClCompile Include="thirdparty\libjpeg\jccoefct.c" />
+    <ClCompile Include="thirdparty\libjpeg\jccolor.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcdctmgr.c" />
+    <ClCompile Include="thirdparty\libjpeg\jchuff.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcinit.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcmainct.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcmarker.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcmaster.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcomapi.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcparam.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcprepct.c" />
+    <ClCompile Include="thirdparty\libjpeg\jcsample.c" />
+    <ClCompile Include="thirdparty\libjpeg\jctrans.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdapimin.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdapistd.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdarith.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdatadst.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdatasrc.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdcoefct.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdcolor.c" />
+    <ClCompile Include="thirdparty\libjpeg\jddctmgr.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdhuff.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdinput.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdmainct.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdmarker.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdmaster.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdmerge.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdpostct.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdsample.c" />
+    <ClCompile Include="thirdparty\libjpeg\jdtrans.c" />
+    <ClCompile Include="thirdparty\libjpeg\jerror.c" />
+    <ClCompile Include="thirdparty\libjpeg\jfdctflt.c" />
+    <ClCompile Include="thirdparty\libjpeg\jfdctfst.c" />
+    <ClCompile Include="thirdparty\libjpeg\jfdctint.c" />
+    <ClCompile Include="thirdparty\libjpeg\jidctflt.c" />
+    <ClCompile Include="thirdparty\libjpeg\jidctfst.c" />
+    <ClCompile Include="thirdparty\libjpeg\jidctint.c" />
+    <ClCompile Include="thirdparty\libjpeg\jmemmgr.c" />
+    <ClCompile Include="thirdparty\libjpeg\jmemnobs.c" />
+    <ClCompile Include="thirdparty\libjpeg\jquant1.c" />
+    <ClCompile Include="thirdparty\libjpeg\jquant2.c" />
+    <ClCompile Include="thirdparty\libjpeg\jutils.c" />
+    <ClCompile Include="thirdparty\libjpeg2\bio.c" />
+    <ClCompile Include="thirdparty\libjpeg2\cidx_manager.c" />
+    <ClCompile Include="thirdparty\libjpeg2\cio.c" />
+    <ClCompile Include="thirdparty\libjpeg2\dwt.c" />
+    <ClCompile Include="thirdparty\libjpeg2\event.c" />
+    <ClCompile Include="thirdparty\libjpeg2\image.c" />
+    <ClCompile Include="thirdparty\libjpeg2\j2k.c" />
+    <ClCompile Include="thirdparty\libjpeg2\j2k_lib.c" />
+    <ClCompile Include="thirdparty\libjpeg2\jp2.c" />
+    <ClCompile Include="thirdparty\libjpeg2\jpt.c" />
+    <ClCompile Include="thirdparty\libjpeg2\mct.c" />
+    <ClCompile Include="thirdparty\libjpeg2\mqc.c" />
+    <ClCompile Include="thirdparty\libjpeg2\openjpeg.c" />
+    <ClCompile Include="thirdparty\libjpeg2\phix_manager.c" />
+    <ClCompile Include="thirdparty\libjpeg2\pi.c" />
+    <ClCompile Include="thirdparty\libjpeg2\ppix_manager.c" />
+    <ClCompile Include="thirdparty\libjpeg2\raw.c" />
+    <ClCompile Include="thirdparty\libjpeg2\t1.c" />
+    <ClCompile Include="thirdparty\libjpeg2\t2.c" />
+    <ClCompile Include="thirdparty\libjpeg2\tcd.c" />
+    <ClCompile Include="thirdparty\libjpeg2\tgt.c" />
+    <ClCompile Include="thirdparty\libjpeg2\thix_manager.c" />
+    <ClCompile Include="thirdparty\libjpeg2\tpix_manager.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_aux.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_close.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_codec.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_color.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_compress.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_dir.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_dirinfo.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_dirread.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_dirwrite.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_dumpmode.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_error.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_extension.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_fax3.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_fax3sm.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_flush.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_getimage.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_jbig.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_jpeg.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_luv.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_lzw.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_next.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_ojpeg.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_open.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_packbits.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_pixarlog.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_predict.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_print.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_read.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_strip.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_swab.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_thunder.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_tile.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_version.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_warning.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_win32.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_write.c" />
+    <ClCompile Include="thirdparty\libtiff\tif_zip.c" />
+    <ClCompile Include="thirdparty\libz\adler32.c" />
+    <ClCompile Include="thirdparty\libz\compress.c" />
+    <ClCompile Include="thirdparty\libz\crc32.c" />
+    <ClCompile Include="thirdparty\libz\deflate.c" />
+    <ClCompile Include="thirdparty\libz\inffast.c" />
+    <ClCompile Include="thirdparty\libz\inflate.c" />
+    <ClCompile Include="thirdparty\libz\inftrees.c" />
+    <ClCompile Include="thirdparty\libz\trees.c" />
+    <ClCompile Include="thirdparty\libz\uncompr.c" />
+    <ClCompile Include="thirdparty\libz\zutil.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

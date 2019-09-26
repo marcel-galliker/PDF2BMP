@@ -1,0 +1,156 @@
+[2017-05-12 14:38:05]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-05-12 14:38:05]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-05-12 14:38:07]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-05-12 14:38:08]  LOG_NOTICE   127.0.0.1 Client: Resolution width(634) Command Received
+[2017-05-12 14:38:08]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-05-12 14:38:09]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-05-12 14:38:09]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-05-12 14:38:10]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\LEX_test_01_IZPIS.PDF) Command Received
+[2017-05-12 14:38:12]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-05-12 14:38:12]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\pdf\temp) Command Received
+[2017-05-12 14:38:12]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2017-05-12 14:38:15]  LOG_NOTICE   127.0.0.1 Client: Convert (5) pages starting at page (1) 
+--> target (bmp0.bmp) 
+ Command Received
+[2017-05-12 14:39:38]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-05-12 14:41:26]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-05-12 14:47:41]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-05-12 14:47:42]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-05-12 14:47:42]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-05-12 14:47:42]  LOG_NOTICE   127.0.0.1 Client: Resolution width(634) Command Received
+[2017-05-12 14:47:42]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-05-12 14:47:42]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-05-12 14:47:42]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-05-12 14:47:48]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\LEX_test_01_IZPIS.PDF) Command Received
+[2017-05-12 14:47:48]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-05-12 14:47:48]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\pdf\temp) Command Received
+[2017-05-12 14:47:48]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2017-05-12 14:47:50]  LOG_NOTICE   127.0.0.1 Client: Convert (5) pages starting at page (1) 
+--> target (bmp0.bmp) 
+ Command Received
+[2017-05-12 14:48:08]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-05-12 14:50:54]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-05-12 14:51:08]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-05-12 14:51:08]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-05-12 14:51:08]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-05-12 14:51:08]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-05-12 14:51:08]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-05-12 14:51:13]  LOG_NOTICE   127.0.0.1 Client: Resolution width(634) Command Received
+[2017-05-12 14:51:13]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-05-12 14:51:13]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-05-12 14:51:13]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-05-12 14:51:14]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\LEX_test_01_IZPIS.PDF) Command Received
+[2017-05-12 14:51:14]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-05-12 14:51:14]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\pdf\temp) Command Received
+[2017-05-12 14:51:14]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2017-05-12 14:51:16]  LOG_NOTICE   127.0.0.1 Client: Convert (5) pages starting at page (1) 
+--> target (bmp0.bmp) 
+ Command Received
+[2017-05-12 14:55:07]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-05-12 14:55:07]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-05-12 14:55:07]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-05-12 14:55:07]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-05-12 14:55:07]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-05-12 14:55:11]  LOG_NOTICE   127.0.0.1 Client: Resolution width(634) Command Received
+[2017-05-12 14:55:11]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-05-12 14:55:12]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-05-12 14:55:12]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-05-12 14:55:13]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\LEX_test_01_IZPIS.PDF) Command Received
+[2017-05-12 14:55:13]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-05-12 14:55:13]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\pdf\temp) Command Received
+[2017-05-12 14:55:13]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2017-05-12 14:55:15]  LOG_NOTICE   127.0.0.1 Client: Convert (5) pages starting at page (1) 
+--> target (bmp0.bmp) 
+ Command Received
+[2017-05-12 14:55:26]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-05-12 15:15:23]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-05-12 15:15:23]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-05-12 15:15:23]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-05-12 15:15:24]  LOG_NOTICE   127.0.0.1 Client: Resolution width(634) Command Received
+[2017-05-12 15:15:24]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-05-12 15:15:24]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-05-12 15:15:24]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-05-12 15:15:29]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\LEX_test_01_IZPIS.PDF) Command Received
+[2017-05-12 15:15:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-05-12 15:15:29]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\pdf\temp) Command Received
+[2017-05-12 15:15:29]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2017-05-12 15:15:31]  LOG_NOTICE   127.0.0.1 Client: Convert (5) pages starting at page (1) 
+--> target (bmp0.bmp) 
+ Command Received
+[2017-05-12 15:16:08]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-05-12 15:17:27]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-05-12 15:17:55]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-05-12 15:17:55]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-05-12 15:17:55]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-05-12 15:17:56]  LOG_NOTICE   127.0.0.1 Client: Resolution width(634) Command Received
+[2017-05-12 15:17:56]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-05-12 15:17:56]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-05-12 15:17:56]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-05-12 15:18:00]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\LEX_test_01_IZPIS.PDF) Command Received
+[2017-05-12 15:18:00]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-05-12 15:18:00]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\pdf\temp) Command Received
+[2017-05-12 15:18:00]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2017-05-12 15:18:02]  LOG_NOTICE   127.0.0.1 Client: Convert (5) pages starting at page (1) 
+--> target (bmp0.bmp) 
+ Command Received
+[2017-05-12 15:18:13]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-05-12 15:18:29]  LOG_NOTICE   127.0.0.1 Client Disconnected
+[2017-05-12 15:18:43]  LOG_NOTICE   A Client Connected from IP address [127.0.0.1].
+[2017-05-12 15:18:43]  LOG_NOTICE   127.0.0.1 Client: Reset Command Received
+[2017-05-12 15:18:43]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=0  flag=0
+
+[2017-05-12 15:18:44]  LOG_NOTICE   127.0.0.1 Client: Resolution width(634) Command Received
+[2017-05-12 15:18:44]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=4  flag=0
+
+[2017-05-12 15:18:44]  LOG_NOTICE   127.0.0.1 Client: Resolution height(600) Command Received
+[2017-05-12 15:18:44]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=5  flag=0
+
+[2017-05-12 15:18:45]  LOG_NOTICE   127.0.0.1 Client: Load PDF(D:\pdf\LEX_test_01_IZPIS.PDF) Command Received
+[2017-05-12 15:18:45]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=1  flag=0
+
+[2017-05-12 15:18:45]  LOG_NOTICE   127.0.0.1 Client: Target directory(D:\pdf\temp) Command Received
+[2017-05-12 15:18:45]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=2  flag=0
+
+[2017-05-12 15:18:50]  LOG_NOTICE   127.0.0.1 Client: Convert (5) pages starting at page (1) 
+--> target (bmp0.bmp) 
+ Command Received
+[2017-05-12 15:18:53]  LOG_NOTICE   REPLY to 127.0.0.1 Client, type=8  flag=0
+
+[2017-05-12 15:19:59]  LOG_NOTICE   127.0.0.1 Client Disconnected
