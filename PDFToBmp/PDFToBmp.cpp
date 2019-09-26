@@ -1,6 +1,7 @@
 
 // PDFToBmp.cpp : Defines the class behaviors for the application.
-//
+// Hello2
+// Gary
 
 #include "stdafx.h"
 #include "PDFToBmp.h"
