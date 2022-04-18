@@ -118,8 +118,16 @@ public:
 
 	float m_fSizeWidth;
 	float m_fSizeHeight;
-
+	
 	float m_pY[5];
+
+	struct savePar{
+		int nResWidth;
+		int nResHeight;
+		int nThreadCnt;
+		float fSizeWidth;
+		float fSizeHeight;
+	};
 
 	int m_nThreadCnt;
 	CListBox m_ListClient;

@@ -129,6 +129,12 @@ BOOL CPDFToBmpDlg::OnInitDialog()
 	if( f.Open( pszFileName , CFile::modeRead | CFile::shareDenyWrite, &ex)){
 		f.Read( &m_options, sizeof( m_options));
 		f.Close();
+		m_nResWidth = m_options.resolutionX;
+		m_nResHeight = m_options.resolutionY;
+		m_fSizeWidth = m_options.sizeWidth;
+		m_fSizeHeight = m_options.sizeHeight;
+		memcpy(m_pY, m_options.pY, sizeof(float)*5);
+		m_nThreadCnt = m_options.threadCnt;
 	}
 	else{
 		m_options.convertmode=0;
@@ -394,6 +400,22 @@ void CPDFToBmpDlg::ConvertItem()
 
 bool CPDFToBmpDlg::SetConvertOptions(wchar_t* srcPath)
 {
+//	int err;
+//	FILE *fili;
+//	struct savePar savePar;
+
+/*	err = fopen_s( &fili, "d:/pdf/savePar.dat", "rb");
+	if ( !err){
+		fread( &savePar, sizeof (unsigned char), sizeof( struct savePar), fili);
+		fclose( fili);
+		m_nResWidth = savePar.fSizeWidth;
+		m_nResHeight = savePar.fSizeHeight;
+		m_nThreadCnt = savePar.nThreadCnt;
+		m_fSizeWidth = savePar.nResWidth;
+		m_fSizeHeight = savePar.nResHeight;
+	}
+*/
+
 	m_options.resolutionX = m_nResWidth;
 	m_options.resolutionY = m_nResHeight;
 
@@ -697,8 +719,23 @@ LRESULT CPDFToBmpDlg::OnClientNotification(WPARAM wParam, LPARAM lParam)
 void CPDFToBmpDlg::OnClose() 
 {
 	int end=1;
+//	int err;
+//	FILE *fili;
+//	struct savePar savePar;
 	// --- end the program ??? ---
 	PostQuitMessage(0); //??? vtt 2/4/2019
+
+/*	err = fopen_s( &fili, "d:/pdf/savePar.dat", "wb");
+	if ( !err){
+		savePar.fSizeWidth = m_nResWidth;
+		savePar.fSizeHeight = m_nResHeight;
+		savePar.nThreadCnt = m_nThreadCnt;
+		savePar.nResWidth = m_fSizeWidth;
+		savePar.nResHeight = m_fSizeHeight;
+		fwrite( &savePar, sizeof (unsigned char), sizeof( struct savePar), fili);
+		fclose( fili);
+	}
+*/
 	CDialog::OnClose();
 /*
 	// Get setting values from Registry 
@@ -886,6 +923,7 @@ int CPDFToBmpDlg::GetMACaddress()
 	mac[0]=0;
 	strcpy( str, "GetMAC > d:/pdf/PDF2BMPmac.txt");
 	system( str);
+	Sleep(100);	// give it time
 	err = fopen_s( &fili, "d:/pdf/PDF2BMPmac.txt", "rb");
 	if ( !err){
 		fread( str, sizeof (unsigned char), sizeof( str), fili);
@@ -909,7 +947,7 @@ int CPDFToBmpDlg::GetMACaddress()
 		fclose( fili);
 	}
 	else{
-		MessageBox( L"Please make a D partition", L"No D partition or no rights to write D");
+		MessageBox( L"Please make a D partition (run as Admin)", L"No D partition or no rights to write D. Make it pdf, small letters");
 	}
 	LPTSTR lpszSystemInfo;
 	DWORD cchBuff = 256;

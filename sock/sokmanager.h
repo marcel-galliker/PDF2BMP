@@ -66,6 +66,8 @@ private:
 	ConvOptions		m_convOptions;
 
 	bool	bExitFlag;
+	DWORD	dwStartTime;
+	int		NoPagesConv;
 
 	HANDLE	WatchClientHandle;
 	HANDLE	ThreadHandle[ MAX_CLIENTS];

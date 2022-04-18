@@ -233,7 +233,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 				wsprintf(clientMsg, L"%s\tResolution width(%d) Command Received\t", clientAddr, receiveMessage.parameter);
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_RECEIVE, (LPARAM)clientMsg);
 
-				m_options.resolutionX = receiveMessage.parameter;
+//				m_options.resolutionX = receiveMessage.parameter;
 
 				clientInfo.convInfo = m_curItem;
 				clientInfo.convOpts = m_options;
@@ -245,7 +245,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 				m_logWriter->log(LOG_NOTICE, L"%s Client: Resolution height(%d) Command Received", clientAddr, receiveMessage.parameter);
 				wsprintf(clientMsg, L"%s\tResolution height(%d) Command Received\t", clientAddr, receiveMessage.parameter);
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_RECEIVE, (LPARAM)clientMsg);
-				m_options.resolutionY = receiveMessage.parameter;
+//				m_options.resolutionY = receiveMessage.parameter;
 
 				clientInfo.convInfo = m_curItem;
 				clientInfo.convOpts = m_options;
@@ -285,6 +285,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 
 				break;
 			case REM_CONVERT_N_PAGES:
+				NoPagesConv=receiveMessage.parameter;
 				TrPrintf (0, "Convert (%d) pages starting at page (%d) \n--> target (bmp%d.bmp) \n", receiveMessage.parameter, receiveMessage.number, receiveMessage.startNumber);
 				m_logWriter->log(LOG_NOTICE, L"%s Client: Convert (%d) pages starting at page (%d) \n--> target (bmp%d.bmp) \n Command Received", clientAddr, receiveMessage.number, receiveMessage.parameter, receiveMessage.startNumber);
 
@@ -317,7 +318,8 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 						clientInfo.convOpts = m_options;
 						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
 
-						swprintf(clientMsg, L"%s\tConverting Started 1 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f)\t", clientAddr, m_options.resolutionX, m_options.resolutionY, m_options.sizeWidth, m_options.sizeHeight);
+						dwStartTime = GetTickCount();
+						swprintf(clientMsg, L"%s\tConverting Started 1 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f tCnt=%d)\t", clientAddr, m_options.resolutionX, m_options.resolutionY, m_options.sizeWidth, m_options.sizeHeight, m_options.threadCnt);
 						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
 
 /*
@@ -338,7 +340,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 						m_options.convertmode = m_convOptions.convertmode;
 						m_options.convertsplit = m_convOptions.convertsplit;
 
-						m_options.threadCnt = MAX_THREAD_COUNT;
+						m_options.threadCnt = m_convOptions.threadCnt; //MAX_THREAD_COUNT;
 						convMgr.convert(m_curItem, m_options);
 
 						while (true)
@@ -347,7 +349,10 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 								break;
 						}
 
-						wsprintf(clientMsg, L"%s\tConverting Finished\t", clientAddr);
+						DWORD dwElapsed = (GetTickCount() - dwStartTime) / 1000;
+						int seconds = dwElapsed;
+//			strTime.Format(L"Elapsed: %.2d:%.2d", dwElapsed / 60, dwElapsed % 60);
+						wsprintf(clientMsg, L"%s\tConverting Finished 1 time: %.2d:%.2d  %d p/h max.\t", clientAddr, dwElapsed / 60, dwElapsed % 60, 3600*(NoPagesConv/seconds));
 						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
 
 						ret = 1;
@@ -368,7 +373,8 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 						clientInfo.convOpts = m_options;
 						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
 
-						swprintf(clientMsg, L"%s\tConverting Started 2 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f)\t", clientAddr, m_options.resolutionX, m_options.resolutionY, m_options.sizeWidth, m_options.sizeHeight);
+						dwStartTime = GetTickCount();
+						swprintf(clientMsg, L"%s\tConverting Started 2 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f tCnt=%d)\t", clientAddr, m_options.resolutionX, m_options.resolutionY, m_options.sizeWidth, m_options.sizeHeight, m_options.threadCnt);
 						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
 
 /*						m_options.pY[0] = 0;
@@ -387,7 +393,8 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 						m_options.convertmode = m_convOptions.convertmode;
 						m_options.convertsplit = m_convOptions.convertsplit;
 
-						m_options.threadCnt = MAX_THREAD_COUNT;
+						m_options.threadCnt = m_convOptions.threadCnt; //MAX_THREAD_COUNT;
+//						m_options.threadCnt = MAX_THREAD_COUNT;
 						convMgr.convert(m_curItem, m_options);
 						
 						while (true)
@@ -396,7 +403,11 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 								break;
 						}
 
-						wsprintf(clientMsg, L"%s\tConverting Finished\t", clientAddr);
+						DWORD dwElapsed = (GetTickCount() - dwStartTime) / 1000;
+						int seconds = dwElapsed;
+//			strTime.Format(L"Elapsed: %.2d:%.2d", dwElapsed / 60, dwElapsed % 60);
+						wsprintf(clientMsg, L"%s\tConverting Finished 2 time: %.2d:%.2d  %d p/h max.\t", clientAddr, dwElapsed / 60, dwElapsed % 60, 3600*(NoPagesConv/seconds));
+
 						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
 
 						strcpy( (char*)sendMessage.name, "Completed");
