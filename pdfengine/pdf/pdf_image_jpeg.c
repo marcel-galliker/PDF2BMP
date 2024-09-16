@@ -189,7 +189,7 @@ base_write_jpeg(base_context *ctx, base_pixmap *pixmap, wchar_t *filename, int q
 	row_pointer[0] = base_malloc(ctx, cinfo.input_components * cinfo.image_width);
 
 	while (cinfo.next_scanline < cinfo.image_height) {
-		for (counter = 0; counter < cinfo.image_width; counter++)
+		for (counter = 0; counter <(int) cinfo.image_width; counter++)
 			memcpy(row_pointer[0] + counter * 3, & pixmap->samples[cinfo.next_scanline * row_stride + counter * pixmap->n], 3);
 		
 		

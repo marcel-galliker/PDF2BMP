@@ -52,8 +52,8 @@
 
 int gettimeofday(struct timeval *tv, struct timezone *tz);
 
-#define snprintf _snprintf
-#define isnan _isnan
+// #define snprintf _snprintf
+// #define isnan _isnan
 #define hypotf _hypotf
 
 #else 
@@ -409,7 +409,7 @@ void base_write_pnm(base_context *ctx, base_pixmap *pixmap, char *filename);
 
 void base_write_pam(base_context *ctx, base_pixmap *pixmap, char *filename, int savealpha);
 
-void base_write_png(base_context *ctx, base_pixmap *pixmap, wchar_t *filename, int savealpha);
+void base_write_png(base_context *ctx, base_pixmap *pixmap, char *filename, int savealpha);
 
 void base_write_pbm(base_context *ctx, base_bitmap *bitmap, char *filename);
 

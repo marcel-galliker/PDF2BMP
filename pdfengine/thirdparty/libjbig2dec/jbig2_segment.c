@@ -63,7 +63,7 @@ jbig2_parse_segment_header (Jbig2Ctx *ctx, uint8_t *buf, size_t buf_size,
   referred_to_segment_size = result->number <= 256 ? 1:
         result->number <= 65536 ? 2 : 4;  
   pa_size = result->flags & 0x40 ? 4 : 1; 
-  if (offset + referred_to_segment_count*referred_to_segment_size + pa_size + 4 > buf_size)
+  if (offset + referred_to_segment_count*referred_to_segment_size + pa_size + 4 > (int)buf_size)
     {
       jbig2_error(ctx, JBIG2_SEVERITY_DEBUG, result->number,
         "jbig2_parse_segment_header() called with insufficient data", -1);

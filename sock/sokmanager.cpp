@@ -157,7 +157,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 
 				// --- _stat opens the file ---
 				retCode = _stat((char*)receiveMessage.name, &st);
-				if (retCode < 0 || (st.st_mode & _S_IFDIR != 0))
+				if (retCode < 0 || ((st.st_mode & _S_IFDIR) != 0))
 				{
 					ret = 1;
 					strcpy( (char*)sendMessage.name, "File Not Found");
@@ -197,7 +197,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_RECEIVE, (LPARAM)clientMsg);
 
 				retCode = _stat((char*)receiveMessage.name, &st);
-				if (retCode < 0 || (st.st_mode & _S_IFDIR == 0))
+				if (retCode < 0 || ((st.st_mode & _S_IFDIR) == 0))
 				{
 					memset(m_curItem.dstPath, 0, sizeof(m_curItem.dstPath));
 					unsigned char* pLastPtr = &receiveMessage.name[strlen((char*)receiveMessage.name) - 1];
@@ -211,7 +211,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 					}
 					
 					retCode = _stat((char*)receiveMessage.name, &st);
-					if (retCode < 0 || (st.st_mode & _S_IFDIR == 0))
+					if (retCode < 0 || ((st.st_mode & _S_IFDIR) == 0))
 					{
 						ret = 1;
 						strcpy( (char*)sendMessage.name, "Path does not exist");

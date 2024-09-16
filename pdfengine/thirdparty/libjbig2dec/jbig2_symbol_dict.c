@@ -555,7 +555,7 @@ jbig2_decode_symbol_dict(Jbig2Ctx *ctx,
 
 		      
 		      rparams.GRTEMPLATE = params->SDRTEMPLATE;
-		      rparams.reference = (ID < ninsyms) ?
+		      rparams.reference = ((int)ID < ninsyms) ?
 					params->SDINSYMS->glyphs[ID] :
 					SDNEWSYMS->glyphs[ID-ninsyms];
 		      rparams.DX = RDX;
@@ -669,7 +669,7 @@ jbig2_decode_symbol_dict(Jbig2Ctx *ctx,
 
 	
 	x = 0;
-	for (j = HCFIRSTSYM; j < NSYMSDECODED; j++) {
+	for (j = HCFIRSTSYM; j < (int)NSYMSDECODED; j++) {
 	  Jbig2Image *glyph;
 	  glyph = jbig2_image_new(ctx, SDNEWSYMWIDTHS[j], HCHEIGHT);
       if (glyph == NULL)
@@ -706,13 +706,13 @@ jbig2_decode_symbol_dict(Jbig2Ctx *ctx,
       m = params->SDINSYMS->n_symbols;
     else
       m = 0;
-    while (j < params->SDNUMEXSYMS) {
+    while (j < (int)params->SDNUMEXSYMS) {
       if (params->SDHUFF)
       	
         exrunlength = exflag ? params->SDNUMEXSYMS : 0;
       else
         code = jbig2_arith_int_decode(IAEX, as, &exrunlength);
-      if (exflag && exrunlength > params->SDNUMEXSYMS - j) {
+      if (exflag && exrunlength > (int)params->SDNUMEXSYMS - j) {
         jbig2_error(ctx, JBIG2_SEVERITY_FATAL, segment->number,
           "runlength too large in export symbol table (%d > %d - %d)\n",
           exrunlength, params->SDNUMEXSYMS, j);
@@ -944,13 +944,13 @@ jbig2_symbol_dictionary(Jbig2Ctx *ctx, Jbig2Segment *segment,
 
   
   if (params.SDREFAGG && !params.SDRTEMPLATE) {
-      if (offset + 4 > segment->data_length)
+      if (offset + 4 > (int)segment->data_length)
 	goto too_short;
       memcpy(params.sdrat, segment_data + offset, 4);
       offset += 4;
   }
 
-  if (offset + 8 > segment->data_length)
+  if (offset + 8 > (int)segment->data_length)
     goto too_short;
 
   

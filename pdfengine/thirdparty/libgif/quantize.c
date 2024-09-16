@@ -112,7 +112,7 @@ QuantizeBuffer(unsigned int Width,
         free((char *)ColorArrayEntries);
         return GIF_ERROR;
     }
-    if (NewColorMapSize < *ColorMapSize) {
+    if ((int)NewColorMapSize < *ColorMapSize) {
         
         for (i = NewColorMapSize; i < *ColorMapSize; i++)
             OutputColorMap[i].Red = OutputColorMap[i].Green =
@@ -120,7 +120,7 @@ QuantizeBuffer(unsigned int Width,
     }
 
     
-    for (i = 0; i < NewColorMapSize; i++) {
+    for (i = 0; i < (int)NewColorMapSize; i++) {
         if ((j = NewColorSubdiv[i].NumEntries) > 0) {
             QuantizedColor = NewColorSubdiv[i].QuantizedColors;
             Red = Green = Blue = 0;
@@ -131,9 +131,9 @@ QuantizeBuffer(unsigned int Width,
                 Blue += QuantizedColor->RGB[2];
                 QuantizedColor = QuantizedColor->Pnext;
             }
-            OutputColorMap[i].Red = (Red << (8 - BITS_PER_PRIM_COLOR)) / j;
-            OutputColorMap[i].Green = (Green << (8 - BITS_PER_PRIM_COLOR)) / j;
-            OutputColorMap[i].Blue = (Blue << (8 - BITS_PER_PRIM_COLOR)) / j;
+            OutputColorMap[i].Red = (GifByteType)(Red << (8 - BITS_PER_PRIM_COLOR)) / j;
+            OutputColorMap[i].Green = (GifByteType) (Green << (8 - BITS_PER_PRIM_COLOR)) / j;
+            OutputColorMap[i].Blue = (GifByteType)(Blue << (8 - BITS_PER_PRIM_COLOR)) / j;
         } else
             fprintf(stderr,
                     "\n%s: Null entry in quantized color map - that's weird.\n",

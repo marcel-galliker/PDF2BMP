@@ -38,7 +38,7 @@ jbig2_decode_mmr_init(Jbig2MmrCtx *mmr, int width, int height, const byte *data,
 	mmr->data_index = 0;
 	mmr->bit_index = 0;
 
-	for (i = 0; i < size && i < 4; i++)
+	for (i = 0; i < (int)size && i < 4; i++)
 		word |= (data[i] << ((3 - i) << 3));
 	mmr->word = word;
 }
@@ -50,7 +50,7 @@ jbig2_decode_mmr_consume(Jbig2MmrCtx *mmr, int n_bits)
 	mmr->bit_index += n_bits;
 	while (mmr->bit_index >= 8) {
 		mmr->bit_index -= 8;
-		if (mmr->data_index + 4 < mmr->size)
+		if (mmr->data_index + 4 < (int)mmr->size)
 			mmr->word |= (mmr->data[mmr->data_index + 4] << mmr->bit_index);
 		mmr->data_index++;
 	}

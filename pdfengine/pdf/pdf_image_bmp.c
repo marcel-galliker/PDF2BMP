@@ -65,7 +65,7 @@ base_write_bmp(base_context *ctx, base_pixmap *pixmap, wchar_t *filename, unsign
 	unsigned char *ptrCurBuf;
 	unsigned char *ptrLineBuf;
 
-	unsigned char *pPtrNextXPt;
+//	unsigned char *pPtrNextXPt;
 	unsigned char *pPtrNextYPt;
 
 	unsigned char *pPtrDownYPt;
@@ -77,9 +77,9 @@ base_write_bmp(base_context *ctx, base_pixmap *pixmap, wchar_t *filename, unsign
 
 	int nOutImgWidth = pixmap->w;
 	int nOutImgHeight = pixmap->h;
-	int nIndexX, nIndexY;
+//	int nIndexX, nIndexY;
 
-	unsigned char xbitFlag, ybitFlag;
+//	unsigned char xbitFlag, ybitFlag;
 
 	int nBitmapPaddingWidth = 0;
 	unsigned int BITMAP_THRESHOLD = 0;
@@ -277,4 +277,5 @@ base_write_bmp(base_context *ctx, base_pixmap *pixmap, wchar_t *filename, unsign
 		ret = system( arg);
 		
 	}
+	return 0;
 }

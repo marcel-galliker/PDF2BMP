@@ -47,7 +47,7 @@ jbig2_decode_text_region(Jbig2Ctx *ctx, Jbig2Segment *segment,
     int RI;
 
     SBNUMSYMS = 0;
-    for (index = 0; index < n_dicts; index++) {
+    for (index = 0; index < (uint32_t)n_dicts; index++) {
         SBNUMSYMS += dicts[index]->n_symbols;
     }
     jbig2_error(ctx, JBIG2_SEVERITY_DEBUG, segment->number,
@@ -257,7 +257,7 @@ cleanup1:
 		uint32_t id = ID;
 
 		index = 0;
-		while (id >= dicts[index]->n_symbols)
+		while ((int)id >= dicts[index]->n_symbols)
 		    id -= dicts[index++]->n_symbols;
 		IB = jbig2_image_clone(ctx, dicts[index]->glyphs[id]);
 	    }

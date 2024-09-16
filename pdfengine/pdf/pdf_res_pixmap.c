@@ -554,7 +554,7 @@ static void putchunk(char *tag, unsigned char *data, int size, FILE *fp)
 /***************************************************************************************/
 
 void
-base_write_png(base_context *ctx, base_pixmap *pixmap, wchar_t *filename, int savealpha)
+base_write_png(base_context *ctx, base_pixmap *pixmap, char *filename, int savealpha)
 {
 	static const unsigned char pngsig[8] = { 137, 80, 78, 71, 13, 10, 26, 10 };
 	FILE *fp;
@@ -627,7 +627,7 @@ base_write_png(base_context *ctx, base_pixmap *pixmap, wchar_t *filename, int sa
 		base_throw(ctx, "cannot compress image data");
 	}
 
-	fp = _wfopen(filename, L"wb");
+	fp = fopen(filename, "wb");
 
 	if (!fp)
 	{

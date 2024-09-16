@@ -39,8 +39,8 @@ CPDFToBmpDlg::CPDFToBmpDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CPDFToBmpDlg::IDD, pParent)
 	, m_strSrcPath(_T(""))
 	, m_strDestPath(_T("d:/pdf/temp"))
-	, m_nResWidth(PDF_RESOLUTION_600)
-	, m_nResHeight(PDF_RESOLUTION_600)
+	, m_nResWidth((int)PDF_RESOLUTION_600)
+	, m_nResHeight((int)PDF_RESOLUTION_600)
 	, m_fSizeWidth(0)
 	, m_fSizeHeight(0)
 	, m_strPrintedPages(_T("All"))
@@ -66,15 +66,15 @@ void CPDFToBmpDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EN_SIZE_WIDTH, m_fSizeWidth);
 	DDX_Text(pDX, IDC_EN_SIZE_HEIGHT, m_fSizeHeight);
 	DDX_Text(pDX, IDC_EN_Y1, m_pY[0]);
-	DDV_MinMaxInt(pDX, m_pY[0], 0, 100);
+	DDV_MinMaxInt(pDX, (int)m_pY[0], 0, 100);
 	DDX_Text(pDX, IDC_EN_Y2, m_pY[1]);
-	DDV_MinMaxInt(pDX, m_pY[1], 0, 100);
+	DDV_MinMaxInt(pDX, (int)m_pY[1], 0, 100);
 	DDX_Text(pDX, IDC_EN_Y3, m_pY[2]);
-	DDV_MinMaxInt(pDX, m_pY[2], 0, 100);
+	DDV_MinMaxInt(pDX, (int)m_pY[2], 0, 100);
 	DDX_Text(pDX, IDC_EN_Y4, m_pY[3]);
-	DDV_MinMaxInt(pDX, m_pY[3], 0, 100);
+	DDV_MinMaxInt(pDX, (int)m_pY[3], 0, 100);
 	DDX_Text(pDX, IDC_EN_Y5, m_pY[4]);
-	DDV_MinMaxInt(pDX, m_pY[4], 0, 100);
+	DDV_MinMaxInt(pDX, (int)m_pY[4], 0, 100);
 	DDX_Text(pDX, IDC_EN_PRINT_PAGES, m_strPrintedPages);
 	DDV_MaxChars(pDX, m_strPrintedPages, 255);
 	DDX_Text(pDX, IDC_EN_THREAD_COUNT, m_nThreadCnt);
@@ -129,8 +129,8 @@ BOOL CPDFToBmpDlg::OnInitDialog()
 	if( f.Open( pszFileName , CFile::modeRead | CFile::shareDenyWrite, &ex)){
 		f.Read( &m_options, sizeof( m_options));
 		f.Close();
-		m_nResWidth = m_options.resolutionX;
-		m_nResHeight = m_options.resolutionY;
+		m_nResWidth = (int)m_options.resolutionX;
+		m_nResHeight = (int)m_options.resolutionY;
 		m_fSizeWidth = m_options.sizeWidth;
 		m_fSizeHeight = m_options.sizeHeight;
 		memcpy(m_pY, m_options.pY, sizeof(float)*5);
@@ -416,8 +416,8 @@ bool CPDFToBmpDlg::SetConvertOptions(wchar_t* srcPath)
 	}
 */
 
-	m_options.resolutionX = m_nResWidth;
-	m_options.resolutionY = m_nResHeight;
+	m_options.resolutionX = (float)m_nResWidth;
+	m_options.resolutionY = (float)m_nResHeight;
 
 	m_options.sizeWidth = m_fSizeWidth;
 	m_options.sizeHeight = m_fSizeHeight;
@@ -810,8 +810,8 @@ void CPDFToBmpDlg::UpdateUIInfos(int index, bool bUpdate)
 		m_strDestPath = m_clientInfos[index].convInfo.dstPath;
 		m_strSrcPath = m_clientInfos[index].convInfo.srcPath;
 		
-		m_nResWidth = m_clientInfos[index].convOpts.resolutionX;
-		m_nResHeight = m_clientInfos[index].convOpts.resolutionY;
+		m_nResWidth = (int)m_clientInfos[index].convOpts.resolutionX;
+		m_nResHeight = (int)m_clientInfos[index].convOpts.resolutionY;
 		m_nThreadCnt = m_clientInfos[index].convOpts.threadCnt;
 
 		wchar_t printedPages[MAX_NAME_SIZE];
@@ -881,10 +881,10 @@ void CPDFToBmpDlg::OnEnChangeEnResWidth()
 	UpdateData();
 	if (m_nResWidth <= 0)
 	{
-		m_nResWidth = PDF_RESOLUTION_600;
+		m_nResWidth = (int)PDF_RESOLUTION_600;
 		UpdateData(FALSE);
 	}
-	m_options.resolutionX = m_nResWidth;
+	m_options.resolutionX = (float)m_nResWidth;
 }
 
 
@@ -893,10 +893,10 @@ void CPDFToBmpDlg::OnEnChangeEnResHeight()
 	UpdateData();
 	if (m_nResHeight <= 0)
 	{
-		m_nResHeight = PDF_RESOLUTION_600;
+		m_nResHeight = (int)PDF_RESOLUTION_600;
 		UpdateData(FALSE);
 	}
-	m_options.resolutionY = m_nResHeight;
+	m_options.resolutionY = (float)m_nResHeight;
 }
 
 
@@ -929,7 +929,7 @@ int CPDFToBmpDlg::GetMACaddress()
 		fread( str, sizeof (unsigned char), sizeof( str), fili);
 		mac[0]=mac2[0]=0;
 		// --- go to 3rd line ---
-		for ( i=0; i< strlen( str); i++){
+		for ( i=0; i< (int)strlen( str); i++){
 			if ( str[i] == 0x0a){
 				line++;
 			}

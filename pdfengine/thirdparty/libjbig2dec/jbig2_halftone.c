@@ -233,7 +233,7 @@ jbig2_decode_gray_scale_image(Jbig2Ctx *ctx, Jbig2Segment* segment,
     return NULL;
   }
 
-  for (i = 0; i < GSBPP; ++i) {
+  for (i = 0; i < (int)GSBPP; ++i) {
     GSPLANES[i] = jbig2_image_new(ctx, GSW, GSH);
     if (GSPLANES[i] == NULL) {
       jbig2_error(ctx, JBIG2_SEVERITY_FATAL, -1,
@@ -298,7 +298,7 @@ jbig2_decode_gray_scale_image(Jbig2Ctx *ctx, Jbig2Segment* segment,
 
     
     stride = GSPLANES[0]->stride;
-    for (i=0; i < stride * GSH; ++i)
+    for (i=0; i < stride * (int)GSH; ++i)
       GSPLANES[j]->data[i] ^= GSPLANES[j+1]->data[i];
 
     
@@ -312,7 +312,7 @@ jbig2_decode_gray_scale_image(Jbig2Ctx *ctx, Jbig2Segment* segment,
                 "failed to allocate GSVALS: %d bytes", GSW);
     return NULL;
   }
-  for (i=0; i<GSW; ++i) {
+  for (i=0; i<(int)GSW; ++i) {
     GSVALS[i] = jbig2_new(ctx, uint8_t , GSH);
     if (GSVALS[i] == NULL) {
       jbig2_error(ctx, JBIG2_SEVERITY_FATAL, -1,
@@ -322,11 +322,11 @@ jbig2_decode_gray_scale_image(Jbig2Ctx *ctx, Jbig2Segment* segment,
   }
 
   
-  for (x = 0; x < GSW; ++x) {
-    for (y = 0; y < GSH; ++y) {
+  for (x = 0; x < (int)GSW; ++x) {
+    for (y = 0; y < (int)GSH; ++y) {
       GSVALS[x][y] = 0;
 
-      for (j = 0; j < GSBPP; ++j)
+      for (j = 0; j < (int)GSBPP; ++j)
         GSVALS[x][y] += jbig2_image_get_pixel(GSPLANES[j], x, y) << j;
     }
   }
@@ -336,7 +336,7 @@ jbig2_decode_gray_scale_image(Jbig2Ctx *ctx, Jbig2Segment* segment,
     jbig2_free(ctx->allocator, as);
     jbig2_word_stream_buf_free(ctx, ws);
   }
-  for (i=0; i< GSBPP; ++i)
+  for (i=0; i< (int)GSBPP; ++i)
     jbig2_image_release(ctx, GSPLANES[i]);
 
   jbig2_free(ctx->allocator, GSPLANES);
@@ -404,7 +404,7 @@ jbig2_decode_halftone_region(Jbig2Ctx *ctx, Jbig2Segment *segment,
 
   
   HBPP = 0; 
-  while(HNUMPATS > (1 << ++HBPP));
+  while((int)HNUMPATS > (1 << ++HBPP));
 
   
   GI = jbig2_decode_gray_scale_image(ctx, segment, data, size,
@@ -439,7 +439,7 @@ jbig2_decode_halftone_region(Jbig2Ctx *ctx, Jbig2Segment *segment,
   }
 
   
-  for (i = 0; i < params->HGW; ++i) {
+  for (i = 0; i < (int)params->HGW; ++i) {
     jbig2_free(ctx->allocator, GI[i]);
   }
   jbig2_free(ctx->allocator, GI);

@@ -20,6 +20,6 @@
 #    define vsnprintf _vsnprintf
 #   endif
 #  endif
-#  define snprintf _snprintf
+// #  define snprintf _snprintf
 
 #endif 

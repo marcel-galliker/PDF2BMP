@@ -83,7 +83,7 @@ main(int argc, char **argv)
 		strcpy(name, realname);
 		clean(name);
 
-		fi = base_open_file(ctx, argv[i]);
+		fi = base_open_file(ctx, (char*)argv[i]);
 		base_lock_stream(fi);
 		cmap = pdf_load_cmap(ctx, fi);
 		base_close(fi);

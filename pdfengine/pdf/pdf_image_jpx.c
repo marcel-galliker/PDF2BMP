@@ -1,6 +1,8 @@
 #include "pdf-internal.h"
 
-#define OPJ_STATIC
+#ifndef OPJ_STATIC
+	#define OPJ_STATIC
+#endif
 #include <openjpeg.h>
 
 static void base_opj_error_callback(const char *msg, void *client_data)

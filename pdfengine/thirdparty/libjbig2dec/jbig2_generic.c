@@ -755,7 +755,7 @@ jbig2_immediate_generic_region(Jbig2Ctx *ctx, Jbig2Segment *segment,
   if (!(seg_flags & 1))
     {
       gbat_bytes = (seg_flags & 6) ? 2 : 8;
-      if (18 + gbat_bytes > segment->data_length)
+      if (18 + gbat_bytes > (int)segment->data_length)
 	return jbig2_error(ctx, JBIG2_SEVERITY_FATAL, segment->number,
 			   "Segment too short");
       memcpy(gbat, segment_data + 18, gbat_bytes);
