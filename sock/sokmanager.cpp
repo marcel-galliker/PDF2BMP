@@ -409,7 +409,9 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 						wsprintf(clientMsg, L"%s\tConverting Finished 2 time: %.2d:%.2d  %d p/h max.\t", clientAddr, dwElapsed / 60, dwElapsed % 60, 3600*(NoPagesConv/seconds));
 
 						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
-
+						sendMessage.parameter	= receiveMessage.parameter;
+						sendMessage.number		= receiveMessage.number;
+						sendMessage.startNumber = receiveMessage.startNumber;
 						strcpy( (char*)sendMessage.name, "Completed");
 					}
 				}
