@@ -40,14 +40,165 @@ VOID watch_main_thread()
 }
 
 
-VOID watch_client_thread(SOCKET *socketConn)
+VOID watch_client_thread(int no)
 {
 	if (g_sokmanager)
-		g_sokmanager->client_thread(socketConn);
+		g_sokmanager->client_thread(no);
 }
 
-VOID sokmanager::client_thread (SOCKET *socketConn)
+VOID start_convert_thread(sokmanager::Sconvert_thread_par *par)
 {
+	if (g_sokmanager)
+		g_sokmanager->convert_thread(par);
+}
+
+
+VOID sokmanager::convert_thread (Sconvert_thread_par *par)
+{
+	int ret=0;
+	wchar_t clientMsg[MAX_NAME_SIZE];
+	struct SocketStruct sendMessage;	
+	struct SocketStruct receiveMessage;
+	memcpy(&receiveMessage, par->pReceiveMessage, sizeof(receiveMessage));
+
+	g_sokmanager->NoPagesConv=receiveMessage.parameter;
+
+	sendMessage.parameter	= receiveMessage.parameter;
+	sendMessage.number		= receiveMessage.number;
+	sendMessage.startNumber = receiveMessage.startNumber;
+
+	if (receiveMessage.parameter > 0 && receiveMessage.number > 0)
+	{
+		if (receiveMessage.parameter + receiveMessage.number - 1 > par->m_curItem->pageCount)
+		{
+			sprintf(par->m_curItem->selectPages, "%d-%d", receiveMessage.parameter, par->m_curItem->pageCount);
+			par->m_curItem->startNumber = receiveMessage.startNumber;
+			par->m_curItem->startPageNumber = receiveMessage.parameter;
+
+			SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)par->clientInfo);
+
+			g_sokmanager->dwStartTime = GetTickCount();
+			swprintf(clientMsg, L"%s\tConverting Started 1 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f tCnt=%d)\t", par->clientAddr, par->m_options->resolutionX, par->m_options->resolutionY, par->m_options->sizeWidth, par->m_options->sizeHeight, par->m_options->threadCnt);
+			SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
+
+			/*
+			m_options.pY[0] = 0;
+			m_options.pY[1] = 25;
+			m_options.pY[2] = 50;
+			m_options.pY[3] = 75;
+			m_options.pY[4] = 100;
+
+			m_options.convertmode = 0;
+			*/
+			// --- values come from foreground ---
+			par->m_options->pY[0] = m_convOptions.pY[0];
+			par->m_options->pY[1] = m_convOptions.pY[1];
+			par->m_options->pY[2] = m_convOptions.pY[2];
+			par->m_options->pY[3] = m_convOptions.pY[3];
+			par->m_options->pY[4] = m_convOptions.pY[4];
+			par->m_options->convertmode = m_convOptions.convertmode;
+			par->m_options->convertsplit = m_convOptions.convertsplit;
+
+			par->m_options->threadCnt = m_convOptions.threadCnt; //MAX_THREAD_COUNT;
+			g_sokmanager->ConvMgr[par->clientNo].convert(*par->m_curItem, *par->m_options);
+			g_sokmanager->running = TRUE;
+			while (TRUE)
+			{
+				if (!g_sokmanager->running) return;
+				if (g_sokmanager->ConvMgr[par->clientNo].WaitForConverting(g_sokmanager->bExitFlag))
+					break;
+			}
+			g_sokmanager->ConvMgr[par->clientNo].stop();
+
+			DWORD dwElapsed = (GetTickCount() - g_sokmanager->dwStartTime) / 1000;
+			int seconds = dwElapsed;
+			//			strTime.Format(L"Elapsed: %.2d:%.2d", dwElapsed / 60, dwElapsed % 60);
+			wsprintf(clientMsg, L"%s\tConverting Finished 1 time: %.2d:%.2d  %d p/h max.\t", par->clientAddr, dwElapsed / 60, dwElapsed % 60, 3600*(g_sokmanager->NoPagesConv/seconds));
+			SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
+
+			ret = 1;
+			strcpy( (char*)sendMessage.name, "End of the file");
+		}
+		else
+		{
+			sprintf(par->m_curItem->selectPages, "%d-%d", receiveMessage.parameter, receiveMessage.number + receiveMessage.parameter - 1);
+			par->m_curItem->startNumber = receiveMessage.startNumber;
+			par->m_curItem->startPageNumber = receiveMessage.parameter;
+
+			if ( m_convOptions.sizeWidth > 0)
+				par->m_options->sizeWidth = m_convOptions.sizeWidth;
+			if ( m_convOptions.sizeHeight > 0)
+				par->m_options->sizeHeight = m_convOptions.sizeHeight;
+
+			par->clientInfo->convInfo = *par->m_curItem;
+			par->clientInfo->convOpts = *par->m_options;
+			SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)par->clientInfo);
+
+			g_sokmanager->dwStartTime = GetTickCount();
+			swprintf(clientMsg, L"%s\tConverting Started 2 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f tCnt=%d)\t", par->clientAddr, par->m_options->resolutionX, par->m_options->resolutionY, par->m_options->sizeWidth, par->m_options->sizeHeight, par->m_options->threadCnt);
+			SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
+
+			/*						m_options.pY[0] = 0;
+			m_options.pY[1] = 25;
+			m_options.pY[2] = 50;
+			m_options.pY[3] = 75;
+			m_options.pY[4] = 100;
+			m_options.convertmode = 0;
+			*/
+			// --- values come from foreground ---
+			par->m_options->pY[0] = m_convOptions.pY[0];
+			par->m_options->pY[1] = m_convOptions.pY[1];
+			par->m_options->pY[2] = m_convOptions.pY[2];
+			par->m_options->pY[3] = m_convOptions.pY[3];
+			par->m_options->pY[4] = m_convOptions.pY[4];
+			par->m_options->convertmode = m_convOptions.convertmode;
+			par->m_options->convertsplit = m_convOptions.convertsplit;
+
+			par->m_options->threadCnt = m_convOptions.threadCnt; //MAX_THREAD_COUNT;
+			//						m_options.threadCnt = MAX_THREAD_COUNT;
+			g_sokmanager->ConvMgr[par->clientNo].convert(*par->m_curItem, *par->m_options);
+			g_sokmanager->running = TRUE;
+			while (TRUE)
+			{
+				if (!g_sokmanager->running) return;
+				if (g_sokmanager->ConvMgr[par->clientNo].WaitForConverting(g_sokmanager->bExitFlag))
+					break;
+			}
+
+			DWORD dwElapsed = (GetTickCount() - g_sokmanager->dwStartTime) / 1000;
+			int seconds = dwElapsed;
+			//			strTime.Format(L"Elapsed: %.2d:%.2d", dwElapsed / 60, dwElapsed % 60);
+			wsprintf(clientMsg, L"%s\tConverting Finished 2 time: %.2d:%.2d  %d p/h max.\t", par->clientAddr, dwElapsed / 60, dwElapsed % 60, 3600*(g_sokmanager->NoPagesConv/seconds));
+
+			SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
+			strcpy( (char*)sendMessage.name, "Completed");
+		}
+	}
+	else
+	{
+		par->clientInfo->convInfo = *par->m_curItem;
+		par->clientInfo->convOpts = *par->m_options;
+		SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)par->clientInfo);
+
+		ret = 2;
+		strcpy( (char*)sendMessage.name, "Page Settings are not correct");
+	}
+	sendMessage.type=receiveMessage.type;
+	sendMessage.flag=ret;
+
+	wsprintf(clientMsg, L"%s\tReply Command type=%d, flag=%d, number=%d\t", par->clientAddr, sendMessage.type, sendMessage.flag, sendMessage.number);
+	SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SEND, (LPARAM)clientMsg);
+	int len = sizeof(sendMessage);
+	if ( rt_sok_msg_send(&ChannelAccept[par->clientNo], &sendMessage, sizeof( sendMessage)) == 0){
+		printf("\nSend socket error. Server there ?\n\n");
+		ret=3;
+	}
+}
+
+VOID sokmanager::client_thread (int no)
+{
+
+	SOCKET *socketConn = &ChannelAccept[no];
 	int		err=0;
 	int		len;
 	struct	SocketStruct			receiveMessage;		/* receieve from socket			*/
@@ -61,8 +212,6 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 	wchar_t clientErrorMsg[MAX_NAME_SIZE];
 
 	TrPrintf (0, "---- client_thread ----\n");
-
-	ConvManager		convMgr;
 	
 	struct _stat st;
 	int retCode;
@@ -96,7 +245,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 		if (len<=0)
 		{
 			err = 1;
-
+			running=FALSE;
 			m_logWriter->log(LOG_NOTICE, L"%s Client Disconnected", clientAddr);
 
 			if (bExitFlag == false)
@@ -114,13 +263,14 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 				memset(&m_curItem, 0, sizeof(m_curItem));
 				wsprintf(clientMsg, L"%s\tReset Command Received\t", clientAddr);
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_RECEIVE, (LPARAM)clientMsg);
-				system( "del d:\\temp\\*.* /Q" );
-				system( "del d:\\pdf\\temp\\*.* /Q" );
+			//	system( "del d:\\temp\\*.* /Q" );
+			//	system( "del d:\\pdf\\temp\\*.* /Q" );
 
 				clientInfo.convInfo = m_curItem;
 				clientInfo.convOpts = m_options;
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
 				break;
+
 			case REM_LOAD_PDF:
 				TrPrintf (0, "Load PDF (%s) \n", receiveMessage.name);
 				sendMessage.number = 0;
@@ -167,7 +317,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 				}
 				else
 				{
-					m_curItem.pageCount = convMgr.getPDFPageCount(m_curItem.srcPath);
+					m_curItem.pageCount = ConvMgr[no].getPDFPageCount(m_curItem.srcPath);
 					if (m_curItem.pageCount <= 0)
 					{
 						ret = 2;
@@ -286,10 +436,8 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 
 				break;
 			case REM_CONVERT_N_PAGES:
-				NoPagesConv=receiveMessage.parameter;
 				TrPrintf (0, "Convert (%d) pages starting at page (%d) \n--> target (bmp%d.bmp) \n", receiveMessage.parameter, receiveMessage.number, receiveMessage.startNumber);
 				m_logWriter->log(LOG_NOTICE, L"%s Client: Convert (%d) pages starting at page (%d) \n--> target (bmp%d.bmp) \n Command Received", clientAddr, receiveMessage.number, receiveMessage.parameter, receiveMessage.startNumber);
-
 				wsprintf(clientMsg, L"%s\tConvert (%d) pages starting at page (%d) \n--> target (bmp%d.bmp) Command Received\t", clientAddr, receiveMessage.number, receiveMessage.parameter, receiveMessage.startNumber);
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_RECEIVE, (LPARAM)clientMsg);
 
@@ -307,126 +455,26 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 					break;
 				}
 
-				if (receiveMessage.parameter > 0 && receiveMessage.number > 0)
-				{
-					if (receiveMessage.parameter + receiveMessage.number - 1 > m_curItem.pageCount)
-					{
-						sprintf(m_curItem.selectPages, "%d-%d", receiveMessage.parameter, m_curItem.pageCount);
-						m_curItem.startNumber = receiveMessage.startNumber;
-						m_curItem.startPageNumber = receiveMessage.parameter;
+				Sconvert_thread_par par;
+				par.clientNo		= no;
+				par.clientAddr		= clientAddr;
+				par.pReceiveMessage = &receiveMessage;
+				par.clientInfo		= &clientInfo;
+				par.m_curItem		= &m_curItem;
+				par.m_options		= &m_options;
 
-						clientInfo.convInfo = m_curItem;
-						clientInfo.convOpts = m_options;
-						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
+				ConvertThreadHandle = CreateThread ( 
+					NULL,									/* no security attributes */
+					0,										/* default stack size */
+					(LPTHREAD_START_ROUTINE) &start_convert_thread,/* function to call */
+					&par,						/* parameter for function */
+					0,										/* 0=thread runs immediately after being called */
+					NULL									/* returns thread identifier */
+				);
 
-						dwStartTime = GetTickCount();
-						swprintf(clientMsg, L"%s\tConverting Started 1 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f tCnt=%d)\t", clientAddr, m_options.resolutionX, m_options.resolutionY, m_options.sizeWidth, m_options.sizeHeight, m_options.threadCnt);
-						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
-
-/*
-						m_options.pY[0] = 0;
-						m_options.pY[1] = 25;
-						m_options.pY[2] = 50;
-						m_options.pY[3] = 75;
-						m_options.pY[4] = 100;
-
-						m_options.convertmode = 0;
-*/
-						// --- values come from foreground ---
-						m_options.pY[0] = m_convOptions.pY[0];
-						m_options.pY[1] = m_convOptions.pY[1];
-						m_options.pY[2] = m_convOptions.pY[2];
-						m_options.pY[3] = m_convOptions.pY[3];
-						m_options.pY[4] = m_convOptions.pY[4];
-						m_options.convertmode = m_convOptions.convertmode;
-						m_options.convertsplit = m_convOptions.convertsplit;
-
-						m_options.threadCnt = m_convOptions.threadCnt; //MAX_THREAD_COUNT;
-						convMgr.convert(m_curItem, m_options);
-
-						while (true)
-						{
-							if (convMgr.WaitForConverting(bExitFlag))
-								break;
-						}
-
-						DWORD dwElapsed = (GetTickCount() - dwStartTime) / 1000;
-						int seconds = dwElapsed;
-//			strTime.Format(L"Elapsed: %.2d:%.2d", dwElapsed / 60, dwElapsed % 60);
-						wsprintf(clientMsg, L"%s\tConverting Finished 1 time: %.2d:%.2d  %d p/h max.\t", clientAddr, dwElapsed / 60, dwElapsed % 60, 3600*(NoPagesConv/seconds));
-						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
-
-						ret = 1;
-						strcpy( (char*)sendMessage.name, "End of the file");
-					}
-					else
-					{
-						sprintf(m_curItem.selectPages, "%d-%d", receiveMessage.parameter, receiveMessage.number + receiveMessage.parameter - 1);
-						m_curItem.startNumber = receiveMessage.startNumber;
-						m_curItem.startPageNumber = receiveMessage.parameter;
-
-						if ( m_convOptions.sizeWidth > 0)
-							m_options.sizeWidth = m_convOptions.sizeWidth;
-						if ( m_convOptions.sizeHeight > 0)
-							m_options.sizeHeight = m_convOptions.sizeHeight;
-
-						clientInfo.convInfo = m_curItem;
-						clientInfo.convOpts = m_options;
-						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
-
-						dwStartTime = GetTickCount();
-						swprintf(clientMsg, L"%s\tConverting Started 2 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f tCnt=%d)\t", clientAddr, m_options.resolutionX, m_options.resolutionY, m_options.sizeWidth, m_options.sizeHeight, m_options.threadCnt);
-						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
-
-/*						m_options.pY[0] = 0;
-						m_options.pY[1] = 25;
-						m_options.pY[2] = 50;
-						m_options.pY[3] = 75;
-						m_options.pY[4] = 100;
-						m_options.convertmode = 0;
-*/
-						// --- values come from foreground ---
-						m_options.pY[0] = m_convOptions.pY[0];
-						m_options.pY[1] = m_convOptions.pY[1];
-						m_options.pY[2] = m_convOptions.pY[2];
-						m_options.pY[3] = m_convOptions.pY[3];
-						m_options.pY[4] = m_convOptions.pY[4];
-						m_options.convertmode = m_convOptions.convertmode;
-						m_options.convertsplit = m_convOptions.convertsplit;
-
-						m_options.threadCnt = m_convOptions.threadCnt; //MAX_THREAD_COUNT;
-//						m_options.threadCnt = MAX_THREAD_COUNT;
-						convMgr.convert(m_curItem, m_options);
-						
-						while (true)
-						{
-							if (convMgr.WaitForConverting(bExitFlag))
-								break;
-						}
-
-						DWORD dwElapsed = (GetTickCount() - dwStartTime) / 1000;
-						int seconds = dwElapsed;
-//			strTime.Format(L"Elapsed: %.2d:%.2d", dwElapsed / 60, dwElapsed % 60);
-						wsprintf(clientMsg, L"%s\tConverting Finished 2 time: %.2d:%.2d  %d p/h max.\t", clientAddr, dwElapsed / 60, dwElapsed % 60, 3600*(NoPagesConv/seconds));
-
-						SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
-						sendMessage.parameter	= receiveMessage.parameter;
-						sendMessage.number		= receiveMessage.number;
-						sendMessage.startNumber = receiveMessage.startNumber;
-						strcpy( (char*)sendMessage.name, "Completed");
-					}
-				}
-				else
-				{
-					clientInfo.convInfo = m_curItem;
-					clientInfo.convOpts = m_options;
-					SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
-
-					ret = 2;
-					strcpy( (char*)sendMessage.name, "Page Settings are not correct");
-				}
 				break;
 			case REM_CLOSE_PDF:
+				running = FALSE;
 				TrPrintf (0, "Closed pdf\n", receiveMessage.type);
 				m_logWriter->log(LOG_NOTICE, L"%s Client: Close pdf Command Received", clientAddr);
 
@@ -469,7 +517,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 			}
 		}
 	}
-
+	ConvMgr[no].stop();
 	TrPrintf (0, "client thread: LOOP LEFT  err=%d\n", err);
 	NoConn--;
 	closesocket (*socketConn);
@@ -605,7 +653,7 @@ void sokmanager::WatchClient()
 					NULL,									/* no security attributes */
 					0,										/* default stack size */
 					(LPTHREAD_START_ROUTINE) &watch_client_thread,/* function to call */
-					&ChannelAccept [ActualConn],			/* parameter for function */
+					(void*)ActualConn,						/* parameter for function */
 					0,										/* 0=thread runs immediately after being called */
 					NULL									/* returns thread identifier */
 					);

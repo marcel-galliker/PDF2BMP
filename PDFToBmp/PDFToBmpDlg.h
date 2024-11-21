@@ -50,7 +50,7 @@ protected:
 
 
 // Implementation
-private:
+public:
 	ConvManager     *m_convManager;
 	sokmanager		*m_sokManager;
 

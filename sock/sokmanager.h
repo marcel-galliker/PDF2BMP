@@ -66,11 +66,15 @@ private:
 	ConvOptions		m_convOptions;
 
 	bool	bExitFlag;
+	bool	running;
 	DWORD	dwStartTime;
 	int		NoPagesConv;
 
 	HANDLE	WatchClientHandle;
+	HANDLE	ConvertThreadHandle;
 	HANDLE	ThreadHandle[ MAX_CLIENTS];
+	ConvManager		ConvMgr[ MAX_CLIENTS];
+
 	SOCKET	SocketListen;							// main socket 							
 	SOCKET	SocketCall;								// main socket for simulation			
 	SOCKET	SocketSetupServer;						// main socket for setup server	
@@ -88,7 +92,22 @@ public:
 	void	WatchClient();
 	void	InitParameter( ConvOptions &options);
 
-	VOID	client_thread (SOCKET *socketConn);
+	VOID	client_thread (int no);
 	char*	socket_getPeerAddress(SOCKET sock);
+
+	typedef struct Sconvert_thread_par
+	{
+		int					clientNo;
+		wchar_t				*clientAddr;
+		struct SocketStruct *pReceiveMessage;
+
+		CLIENT_INFO		*clientInfo;
+
+		ConvFileInfo	*m_curItem;
+		ConvOptions		*m_options;
+
+	} Sconvert_thread_par;
+
+	VOID sokmanager::convert_thread (Sconvert_thread_par *par);
 };
 #endif
