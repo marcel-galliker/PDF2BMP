@@ -665,7 +665,7 @@ LRESULT CPDFToBmpDlg::OnClientNotification(WPARAM wParam, LPARAM lParam)
 		m_ListReport.SetItemText(itemCnt, 1, L"Client Disconnected");
 		m_ListReport.SetItemText(itemCnt, 2, timeStr);
 		PostQuitMessage(0); //??? vtt 2/4/2019
-		CDialog::OnClose();
+//		CDialog::OnClose();
 		break;
 	case CLIENT_MSG_RECEIVE:
 	case CLIENT_MSG_SEND:

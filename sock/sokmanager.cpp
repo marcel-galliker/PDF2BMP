@@ -101,6 +101,7 @@ VOID sokmanager::client_thread (SOCKET *socketConn)
 
 			if (bExitFlag == false)
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_DISCONNECTED, (LPARAM)clientAddr);
+			break;
 		}
 		else {
 			switch (receiveMessage.type) {

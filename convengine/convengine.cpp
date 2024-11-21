@@ -663,7 +663,7 @@ bool ConvEngine::extractPageData(int pageno,
 		if (m_sPageBBox[threadId].left != bbox.x0
 			|| m_sPageBBox[threadId].top != bbox.y0
 			|| m_sPageBBox[threadId].right != bbox.x1 
-			||m_sPageBBox[threadId].bottom != bbox.y1)
+			|| m_sPageBBox[threadId].bottom != bbox.y1)
 		{
 			if (m_pPDFImage[threadId] != NULL)
 			{
@@ -671,6 +671,8 @@ bool ConvEngine::extractPageData(int pageno,
 				m_pPDFImage[threadId] = NULL;
 			}
 		}
+
+		bbox.x1 = (bbox.x1+15) & ~15;	// multiple of 16 bits! to remove black line at label end
 
 		m_sPageBBox[threadId].left = bbox.x0, m_sPageBBox[threadId].top = bbox.y0;
 		m_sPageBBox[threadId].right = bbox.x1, m_sPageBBox[threadId].bottom = bbox.y1;
