@@ -394,7 +394,7 @@ void CPDFToBmpDlg::ConvertItem()
 		if (!SetConvertOptions(m_curItem.srcPath))
 			return;
 
-		m_convManager->convert(m_curItem, m_options);
+		m_convManager->convert(m_curItem, m_options, NULL);
 	}
 }
 

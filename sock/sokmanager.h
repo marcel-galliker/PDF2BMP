@@ -13,7 +13,7 @@ extern "C"
 // ---------- DEFINES -----------------------------------------------------------------------------
 #define MAX_NAME_HOST		30
 #define MAX_NAME_PORT		10
-#define MAX_CLIENTS			2
+#define MAX_CLIENTS			1
 #define MAX_RECORD_LEN		250
 #define RECS				10
 #define MIC_REM_NAME_LEN	500
@@ -29,7 +29,9 @@ enum REMPacketType {
 	REM_SET_RES_HEIGHT,		//5 set in parameter, default is 600 dpi
 	REM_SET_PAGE_WIDTH,		//6 inch set in parameter, default is 0=as is
 	REM_SET_PAGE_HEIGHT,	//7 inch set in parameter, default is 0=as is
-	REM_CONVERT_N_PAGES,	//8 starting page in parameter, number in number
+	REM_SET_THREAD_CNT,		//8 number of threads
+	REM_CONVERT_N_PAGES,	//9 starting page in parameter, number in number
+	REM_CONVERT_PAGE,		//10 starting page in parameter
 	REMPacketType_MAX
 }; 
 
@@ -48,6 +50,11 @@ struct ClientThreadParam {
 	SOCKET*				clientSocket;
 };
 
+void TrPrintf (int level, char *format, ...);
+extern int	 Trace;
+extern char	 MyName[20];
+
+
 class sokmanager
 {
 public:
@@ -55,10 +62,8 @@ public:
 	~sokmanager();
 
 private:
-	int		Trace;
 	int		Client;
 	int		First;
-	char	MyName[20];
 	char	Host[ MAX_NAME_HOST+1];					// Hostname						
 	char	Port[ MAX_NAME_PORT+1];					// Communication Port	
 	int		NoConn,ActualConn;
@@ -78,13 +83,9 @@ private:
 	SOCKET	SocketListen;							// main socket 							
 	SOCKET	SocketCall;								// main socket for simulation			
 	SOCKET	SocketSetupServer;						// main socket for setup server	
-	SOCKET	ChannelAccept[ MAX_CLIENTS];			// channel per client
 
 	LogWriter *m_logWriter;
 	HWND	m_hParentWnd;
-
-private:
-	void TrPrintf (int level, char *format, ...);
 
 public:
 	void	Init(HWND hParentWnd);
@@ -94,6 +95,7 @@ public:
 
 	VOID	client_thread (int no);
 	char*	socket_getPeerAddress(SOCKET sock);
+	SOCKET	ChannelAccept[ MAX_CLIENTS];			// channel per client
 
 	typedef struct Sconvert_thread_par
 	{
@@ -102,9 +104,6 @@ public:
 		struct SocketStruct *pReceiveMessage;
 
 		CLIENT_INFO		*clientInfo;
-
-		ConvFileInfo	*m_curItem;
-		ConvOptions		*m_options;
 
 	} Sconvert_thread_par;
 

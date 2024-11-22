@@ -9,7 +9,10 @@ sokmanager* g_sokmanager = NULL;
 
 #define		TRACE_LEN	250 
 char trString [2][TRACE_LEN+1];
-void sokmanager::TrPrintf (int level, char *format, ...)
+int	 Trace;
+char	 MyName[20];
+
+void TrPrintf (int level, char *format, ...)
 {
 	int	len;
 	char *str;
@@ -52,6 +55,32 @@ VOID start_convert_thread(sokmanager::Sconvert_thread_par *par)
 		g_sokmanager->convert_thread(par);
 }
 
+static HANDLE _Semaphore=NULL;
+
+static int _ClientNo; 
+static void _page_converted(int no)
+{
+	int dwWaitResult = WaitForSingleObject(_Semaphore, INFINITE);
+	if (dwWaitResult==WAIT_OBJECT_0)
+	{
+		TrPrintf(-1, "page %d converted \n");
+		struct SocketStruct sendMessage;
+		memset(&sendMessage, 0, sizeof(sendMessage));
+		sendMessage.type = REM_CONVERT_PAGE;
+		sendMessage.parameter = no;
+		sendMessage.number = 1;
+		if ( rt_sok_msg_send(&g_sokmanager->ChannelAccept[_ClientNo], &sendMessage, sizeof( sendMessage)-sizeof(sendMessage.name)) == 0)
+		{
+			printf("\nSend socket error. Server there ?\n\n");
+		}
+		if (!ReleaseSemaphore(_Semaphore, 
+			1,            // increase count by one
+			NULL) )       // not interested in previous count
+		{
+			printf("ReleaseSemaphore error: %d\n", GetLastError());
+		}
+	}
+}
 
 VOID sokmanager::convert_thread (Sconvert_thread_par *par)
 {
@@ -59,26 +88,36 @@ VOID sokmanager::convert_thread (Sconvert_thread_par *par)
 	wchar_t clientMsg[MAX_NAME_SIZE];
 	struct SocketStruct sendMessage;	
 	struct SocketStruct receiveMessage;
+
+	ConvFileInfo	*info    = &par->clientInfo->convInfo;
+	ConvOptions		*options = &par->clientInfo->convOpts;
+
 	memcpy(&receiveMessage, par->pReceiveMessage, sizeof(receiveMessage));
 
 	g_sokmanager->NoPagesConv=receiveMessage.parameter;
-
 	sendMessage.parameter	= receiveMessage.parameter;
 	sendMessage.number		= receiveMessage.number;
 	sendMessage.startNumber = receiveMessage.startNumber;
 
+	if (_Semaphore==NULL) _Semaphore = CreateSemaphore( 
+		NULL,           // default security attributes
+		1,  // initial count
+		1,  // maximum count
+		NULL);          // unnamed semaphore
+
+//	g_sokmanager->ConvMgr[par->clientNo] = _page_converted;
 	if (receiveMessage.parameter > 0 && receiveMessage.number > 0)
 	{
-		if (receiveMessage.parameter + receiveMessage.number - 1 > par->m_curItem->pageCount)
+		if (receiveMessage.parameter + receiveMessage.number - 1 > info->pageCount)
 		{
-			sprintf(par->m_curItem->selectPages, "%d-%d", receiveMessage.parameter, par->m_curItem->pageCount);
-			par->m_curItem->startNumber = receiveMessage.startNumber;
-			par->m_curItem->startPageNumber = receiveMessage.parameter;
+			sprintf(info->selectPages, "%d-%d", receiveMessage.parameter, info->pageCount);
+			info->startNumber = receiveMessage.startNumber;
+			info->startPageNumber = receiveMessage.parameter;
 
 			SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)par->clientInfo);
 
 			g_sokmanager->dwStartTime = GetTickCount();
-			swprintf(clientMsg, L"%s\tConverting Started 1 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f tCnt=%d)\t", par->clientAddr, par->m_options->resolutionX, par->m_options->resolutionY, par->m_options->sizeWidth, par->m_options->sizeHeight, par->m_options->threadCnt);
+			swprintf(clientMsg, L"%s\tConverting Started 1 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f tCnt=%d)\t", par->clientAddr, options->resolutionX, options->resolutionY, options->sizeWidth, options->sizeHeight, options->threadCnt);
 			SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
 
 			/*
@@ -91,16 +130,16 @@ VOID sokmanager::convert_thread (Sconvert_thread_par *par)
 			m_options.convertmode = 0;
 			*/
 			// --- values come from foreground ---
-			par->m_options->pY[0] = m_convOptions.pY[0];
-			par->m_options->pY[1] = m_convOptions.pY[1];
-			par->m_options->pY[2] = m_convOptions.pY[2];
-			par->m_options->pY[3] = m_convOptions.pY[3];
-			par->m_options->pY[4] = m_convOptions.pY[4];
-			par->m_options->convertmode = m_convOptions.convertmode;
-			par->m_options->convertsplit = m_convOptions.convertsplit;
+			options->pY[0] = m_convOptions.pY[0];
+			options->pY[1] = m_convOptions.pY[1];
+			options->pY[2] = m_convOptions.pY[2];
+			options->pY[3] = m_convOptions.pY[3];
+			options->pY[4] = m_convOptions.pY[4];
+			options->convertmode = m_convOptions.convertmode;
+			options->convertsplit = m_convOptions.convertsplit;
 
-			par->m_options->threadCnt = m_convOptions.threadCnt; //MAX_THREAD_COUNT;
-			g_sokmanager->ConvMgr[par->clientNo].convert(*par->m_curItem, *par->m_options);
+			options->threadCnt = m_convOptions.threadCnt; //MAX_THREAD_COUNT;
+			g_sokmanager->ConvMgr[par->clientNo].convert(*info, *options, _page_converted);
 			g_sokmanager->running = TRUE;
 			while (TRUE)
 			{
@@ -121,21 +160,21 @@ VOID sokmanager::convert_thread (Sconvert_thread_par *par)
 		}
 		else
 		{
-			sprintf(par->m_curItem->selectPages, "%d-%d", receiveMessage.parameter, receiveMessage.number + receiveMessage.parameter - 1);
-			par->m_curItem->startNumber = receiveMessage.startNumber;
-			par->m_curItem->startPageNumber = receiveMessage.parameter;
+			sprintf(info->selectPages, "%d-%d", receiveMessage.parameter, receiveMessage.number + receiveMessage.parameter - 1);
+			info->startNumber = receiveMessage.startNumber;
+			info->startPageNumber = receiveMessage.parameter;
 
 			if ( m_convOptions.sizeWidth > 0)
-				par->m_options->sizeWidth = m_convOptions.sizeWidth;
+				options->sizeWidth = m_convOptions.sizeWidth;
 			if ( m_convOptions.sizeHeight > 0)
-				par->m_options->sizeHeight = m_convOptions.sizeHeight;
+				options->sizeHeight = m_convOptions.sizeHeight;
 
-			par->clientInfo->convInfo = *par->m_curItem;
-			par->clientInfo->convOpts = *par->m_options;
+			par->clientInfo->convInfo = *info;
+			par->clientInfo->convOpts = *options;
 			SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)par->clientInfo);
 
 			g_sokmanager->dwStartTime = GetTickCount();
-			swprintf(clientMsg, L"%s\tConverting Started 2 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f tCnt=%d)\t", par->clientAddr, par->m_options->resolutionX, par->m_options->resolutionY, par->m_options->sizeWidth, par->m_options->sizeHeight, par->m_options->threadCnt);
+			swprintf(clientMsg, L"%s\tConverting Started 2 (resX=%.1f, resY=%.1f width=%.2f  height=%.2f tCnt=%d)\t", par->clientAddr, options->resolutionX, options->resolutionY, options->sizeWidth, options->sizeHeight, options->threadCnt);
 			SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
 
 			/*						m_options.pY[0] = 0;
@@ -146,17 +185,17 @@ VOID sokmanager::convert_thread (Sconvert_thread_par *par)
 			m_options.convertmode = 0;
 			*/
 			// --- values come from foreground ---
-			par->m_options->pY[0] = m_convOptions.pY[0];
-			par->m_options->pY[1] = m_convOptions.pY[1];
-			par->m_options->pY[2] = m_convOptions.pY[2];
-			par->m_options->pY[3] = m_convOptions.pY[3];
-			par->m_options->pY[4] = m_convOptions.pY[4];
-			par->m_options->convertmode = m_convOptions.convertmode;
-			par->m_options->convertsplit = m_convOptions.convertsplit;
+			options->pY[0] = m_convOptions.pY[0];
+			options->pY[1] = m_convOptions.pY[1];
+			options->pY[2] = m_convOptions.pY[2];
+			options->pY[3] = m_convOptions.pY[3];
+			options->pY[4] = m_convOptions.pY[4];
+			options->convertmode = m_convOptions.convertmode;
+			options->convertsplit = m_convOptions.convertsplit;
 
-			par->m_options->threadCnt = m_convOptions.threadCnt; //MAX_THREAD_COUNT;
+			options->threadCnt = m_convOptions.threadCnt; //MAX_THREAD_COUNT;
 			//						m_options.threadCnt = MAX_THREAD_COUNT;
-			g_sokmanager->ConvMgr[par->clientNo].convert(*par->m_curItem, *par->m_options);
+			g_sokmanager->ConvMgr[par->clientNo].convert(*info, *options, _page_converted);
 			g_sokmanager->running = TRUE;
 			while (TRUE)
 			{
@@ -176,8 +215,6 @@ VOID sokmanager::convert_thread (Sconvert_thread_par *par)
 	}
 	else
 	{
-		par->clientInfo->convInfo = *par->m_curItem;
-		par->clientInfo->convOpts = *par->m_options;
 		SendMessage(g_sokmanager->m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)par->clientInfo);
 
 		ret = 2;
@@ -186,6 +223,10 @@ VOID sokmanager::convert_thread (Sconvert_thread_par *par)
 	sendMessage.type=receiveMessage.type;
 	sendMessage.flag=ret;
 
+	CloseHandle(_Semaphore);
+	_Semaphore = NULL;
+
+	/*
 	wsprintf(clientMsg, L"%s\tReply Command type=%d, flag=%d, number=%d\t", par->clientAddr, sendMessage.type, sendMessage.flag, sendMessage.number);
 	SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SEND, (LPARAM)clientMsg);
 	int len = sizeof(sendMessage);
@@ -193,6 +234,7 @@ VOID sokmanager::convert_thread (Sconvert_thread_par *par)
 		printf("\nSend socket error. Server there ?\n\n");
 		ret=3;
 	}
+	*/
 }
 
 VOID sokmanager::client_thread (int no)
@@ -335,8 +377,8 @@ VOID sokmanager::client_thread (int no)
 				clientInfo.convInfo = m_curItem;
 				clientInfo.convOpts = m_options;
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
-
 				break;
+
 			case REM_SET_TARGET:
 				TrPrintf (0, "Target directory (%s) \n", receiveMessage.name);
 
@@ -376,8 +418,22 @@ VOID sokmanager::client_thread (int no)
 				clientInfo.convInfo = m_curItem;
 				clientInfo.convOpts = m_options;
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
-
 				break;
+
+
+			case REM_SET_THREAD_CNT:
+				TrPrintf (0, "Thread Count(%d) \n", receiveMessage.parameter);
+				m_logWriter->log(LOG_NOTICE, L"%s Client: Thread Count (%d) Command Received", clientAddr, receiveMessage.parameter);
+				wsprintf(clientMsg, L"%s\tThread Count(%d) Command Received\t", clientAddr, receiveMessage.parameter);
+				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_RECEIVE, (LPARAM)clientMsg);
+				m_options.threadCnt = receiveMessage.parameter;
+				if (m_options.threadCnt<1)				  m_options.threadCnt=1;
+				if (m_options.threadCnt>MAX_THREAD_COUNT) m_options.threadCnt=MAX_THREAD_COUNT;
+				clientInfo.convInfo = m_curItem;
+				clientInfo.convOpts = m_options;
+				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
+				break;
+
 			case REM_SET_RES_WIDTH:
 				TrPrintf (0, "Resolution width (%d) \n", receiveMessage.parameter);
 				m_logWriter->log(LOG_NOTICE, L"%s Client: Resolution width(%d) Command Received", clientAddr, receiveMessage.parameter);
@@ -389,20 +445,19 @@ VOID sokmanager::client_thread (int no)
 				clientInfo.convInfo = m_curItem;
 				clientInfo.convOpts = m_options;
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
-
 				break;
+
 			case REM_SET_RES_HEIGHT:
 				TrPrintf (0, "Resolution height (%d) \n", receiveMessage.parameter);
 				m_logWriter->log(LOG_NOTICE, L"%s Client: Resolution height(%d) Command Received", clientAddr, receiveMessage.parameter);
 				wsprintf(clientMsg, L"%s\tResolution height(%d) Command Received\t", clientAddr, receiveMessage.parameter);
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_RECEIVE, (LPARAM)clientMsg);
 //				m_options.resolutionY = receiveMessage.parameter;
-
 				clientInfo.convInfo = m_curItem;
 				clientInfo.convOpts = m_options;
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
-
 				break;
+
 			case REM_SET_PAGE_WIDTH:
 				TrPrintf (0, "Page width (%d) \n", receiveMessage.parameter);
 				m_logWriter->log(LOG_NOTICE, L"%s Client: Page width(%d) Command Received", clientAddr, receiveMessage.parameter);
@@ -417,8 +472,8 @@ VOID sokmanager::client_thread (int no)
 				clientInfo.convInfo = m_curItem;
 				clientInfo.convOpts = m_options;
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
-
 				break;
+
 			case REM_SET_PAGE_HEIGHT:
 				TrPrintf (0, "Page height (%d) \n", receiveMessage.parameter);
 				m_logWriter->log(LOG_NOTICE, L"%s Client: Page height(%d) Command Received", clientAddr, receiveMessage.parameter);
@@ -433,8 +488,8 @@ VOID sokmanager::client_thread (int no)
 				clientInfo.convInfo = m_curItem;
 				clientInfo.convOpts = m_options;
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
-
 				break;
+
 			case REM_CONVERT_N_PAGES:
 				TrPrintf (0, "Convert (%d) pages starting at page (%d) \n--> target (bmp%d.bmp) \n", receiveMessage.parameter, receiveMessage.number, receiveMessage.startNumber);
 				m_logWriter->log(LOG_NOTICE, L"%s Client: Convert (%d) pages starting at page (%d) \n--> target (bmp%d.bmp) \n Command Received", clientAddr, receiveMessage.number, receiveMessage.parameter, receiveMessage.startNumber);
@@ -456,12 +511,11 @@ VOID sokmanager::client_thread (int no)
 				}
 
 				Sconvert_thread_par par;
+				_ClientNo = no;
 				par.clientNo		= no;
 				par.clientAddr		= clientAddr;
 				par.pReceiveMessage = &receiveMessage;
 				par.clientInfo		= &clientInfo;
-				par.m_curItem		= &m_curItem;
-				par.m_options		= &m_options;
 
 				ConvertThreadHandle = CreateThread ( 
 					NULL,									/* no security attributes */
@@ -473,6 +527,11 @@ VOID sokmanager::client_thread (int no)
 				);
 
 				break;
+
+			case REM_CONVERT_PAGE:
+				ConvMgr[no].convertPage(receiveMessage.parameter);
+				break;
+
 			case REM_CLOSE_PDF:
 				running = FALSE;
 				TrPrintf (0, "Closed pdf\n", receiveMessage.type);
@@ -486,6 +545,7 @@ VOID sokmanager::client_thread (int no)
 				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SETINFO, (LPARAM)&clientInfo);
 
 				break;
+
 			default:
 				TrPrintf (0, "received: unexpected type %d\n", receiveMessage.type);
 				m_logWriter->log(LOG_NOTICE, L"%s Client: unexpected type Command Received", clientAddr);
@@ -494,26 +554,29 @@ VOID sokmanager::client_thread (int no)
 				break;
 			} /* end switch */
 
-			// send REPLY
-			sendMessage.type=receiveMessage.type;
-			sendMessage.flag=ret;
-			TrPrintf (0, "REPLY to %s Client, type=%d  flag=%d\n", clientAddr, sendMessage.type, sendMessage.flag);
-			m_logWriter->log(LOG_NOTICE, L"REPLY to %s Client, type=%d  flag=%d\n", clientAddr, sendMessage.type, sendMessage.flag);
-			
-			if (ret != 0)
+			if (receiveMessage.type!=REM_CONVERT_PAGE)
 			{
-				memset(clientErrorMsg, 0, sizeof(clientErrorMsg));
-				MultiByteToWideChar(CP_ACP, 0, (char*)sendMessage.name, strlen((char*)sendMessage.name), clientErrorMsg, sizeof(clientErrorMsg));
-				wsprintf(clientMsg, L"%s\tError: %s\t", clientAddr, clientErrorMsg);
-				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
-			}
-			wsprintf(clientMsg, L"%s\tReply Command type=%d, flag=%d, number=%d\t", clientAddr, sendMessage.type, sendMessage.flag, sendMessage.number);
-			SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SEND, (LPARAM)clientMsg);
-
-			len = sizeof( sendMessage);
-			if ( rt_sok_msg_send( socketConn, &sendMessage, sizeof( sendMessage)) == 0){
-				printf("\nSend socket error. Server there ?\n\n");
-				err=3;
+				// send REPLY
+				sendMessage.type=receiveMessage.type;
+				sendMessage.flag=ret;
+				TrPrintf (0, "REPLY to %s Client, type=%d  flag=%d\n", clientAddr, sendMessage.type, sendMessage.flag);
+				m_logWriter->log(LOG_NOTICE, L"REPLY to %s Client, type=%d  flag=%d\n", clientAddr, sendMessage.type, sendMessage.flag);
+			
+				if (ret != 0)
+				{
+					memset(clientErrorMsg, 0, sizeof(clientErrorMsg));
+					MultiByteToWideChar(CP_ACP, 0, (char*)sendMessage.name, strlen((char*)sendMessage.name), clientErrorMsg, sizeof(clientErrorMsg));
+					wsprintf(clientMsg, L"%s\tError: %s\t", clientAddr, clientErrorMsg);
+					SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_STATE, (LPARAM)clientMsg);
+				}
+				wsprintf(clientMsg, L"%s\tReply Command type=%d, flag=%d, number=%d\t", clientAddr, sendMessage.type, sendMessage.flag, sendMessage.number);
+				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_SEND, (LPARAM)clientMsg);
+			
+				len = sizeof( sendMessage);
+				if ( rt_sok_msg_send( socketConn, &sendMessage, sizeof( sendMessage)) == 0){
+					printf("\nSend socket error. Server there ?\n\n");
+					err=3;
+				}
 			}
 		}
 	}
@@ -606,7 +669,7 @@ void sokmanager::WatchClient()
 	while (bExitFlag == false) {
 		TrPrintf( 0, "Waiting for clients\n");
 
-		if ( NoConn>=MAX_CLIENTS) {
+		if ( NoConn>MAX_CLIENTS) {
 			printf("Max. number of clients %d reached\n", MAX_CLIENTS);
 			wsprintf(clientMsg, L"%s\tMax. number of clients %d reached\t", clientAddr, MAX_CLIENTS);
 			SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_DISCONNECTED, (LPARAM)clientMsg);
@@ -615,53 +678,55 @@ void sokmanager::WatchClient()
 		}
 		/*--- Get the next available connection ---*/
 		ActualConn=-1;
+		SOCKET sok =accept (SocketListen, NULL, NULL);
 		for (i=0; i<MAX_CLIENTS; i++)
-			if (ChannelAccept [i]==INVALID_SOCKET) {
+		{
+			if (ChannelAccept[i]==INVALID_SOCKET) {
 				ActualConn=i;
+				ChannelAccept [ActualConn] = sok;
 				break;
 			}
 			if (ActualConn==-1) {
 				printf( "2Too many clients connected, >%d", MAX_CLIENTS);
 				continue;
 			}
-			/*--- wait for client connection ---*/
-			ChannelAccept [ActualConn]=accept (SocketListen, NULL, NULL);
-			if (ChannelAccept [ActualConn]==INVALID_SOCKET) {
-				if (ret=WSAGetLastError() ==10093) { 
-					// socket has already been closed
-					printf( "socket has already been closed");
-					return;
-				}
+		}
+		if (ChannelAccept [ActualConn]==INVALID_SOCKET) {
+			if (ret=WSAGetLastError() ==10093) { 
+				// socket has already been closed
+				printf( "socket has already been closed");
+				return;
 			}
-			else {
-				BOOL bNoDelay = TRUE;
-				char *connAddr = socket_getPeerAddress(ChannelAccept[ActualConn]);
+		}
+		else {
+			BOOL bNoDelay = TRUE;
+			char *connAddr = socket_getPeerAddress(ChannelAccept[ActualConn]);
 
-				setsockopt (ChannelAccept [ActualConn], IPPROTO_TCP, TCP_NODELAY, (LPSTR) &bNoDelay, sizeof (BOOL));
+			setsockopt (ChannelAccept [ActualConn], IPPROTO_TCP, TCP_NODELAY, (LPSTR) &bNoDelay, sizeof (BOOL));
 
-				TrPrintf( 0, "create a receiver thread for that client");
+			TrPrintf( 0, "create a receiver thread for that client");
 
-				//to get ip address of client (add by CSC)
-				memset(clientAddr, 0, MAX_NAME_SIZE);
-				MultiByteToWideChar(CP_ACP, 0, connAddr, strlen(connAddr), clientAddr, MAX_NAME_SIZE);
+			//to get ip address of client (add by CSC)
+			memset(clientAddr, 0, MAX_NAME_SIZE);
+			MultiByteToWideChar(CP_ACP, 0, connAddr, strlen(connAddr), clientAddr, MAX_NAME_SIZE);
 
-				m_logWriter->log(LOG_NOTICE, L"A Client Connected from IP address [%s].", clientAddr);
-				SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_CONNECTED, (LPARAM)clientAddr);
+			m_logWriter->log(LOG_NOTICE, L"A Client Connected from IP address [%s].", clientAddr);
+			SendMessage(m_hParentWnd, WM_CLIENT_NOTIFY, (WPARAM)CLIENT_MSG_CONNECTED, (LPARAM)clientAddr);
 
-				/*--- create a receiver thread for that client ---*/
-				ThreadHandle [ActualConn]=CreateThread ( 
-					NULL,									/* no security attributes */
-					0,										/* default stack size */
-					(LPTHREAD_START_ROUTINE) &watch_client_thread,/* function to call */
-					(void*)ActualConn,						/* parameter for function */
-					0,										/* 0=thread runs immediately after being called */
-					NULL									/* returns thread identifier */
-					);
-				if (ThreadHandle [ActualConn]==NULL)
-					printf("Could not start Thread");
-				SetThreadPriority (ThreadHandle [ActualConn], THREAD_PRIORITY_BELOW_NORMAL);
-				NoConn++;
-			}
+			/*--- create a receiver thread for that client ---*/
+			ThreadHandle [ActualConn]=CreateThread ( 
+				NULL,									/* no security attributes */
+				0,										/* default stack size */
+				(LPTHREAD_START_ROUTINE) &watch_client_thread,/* function to call */
+				(void*)ActualConn,						/* parameter for function */
+				0,										/* 0=thread runs immediately after being called */
+				NULL									/* returns thread identifier */
+				);
+			if (ThreadHandle [ActualConn]==NULL)
+				printf("Could not start Thread");
+			SetThreadPriority (ThreadHandle [ActualConn], THREAD_PRIORITY_BELOW_NORMAL);
+			NoConn++;
+		}
 	}
 }
 

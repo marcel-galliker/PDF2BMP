@@ -12,7 +12,7 @@
 
 DWORD WINAPI CONVERT_THREAD( LPVOID lpParam ) 
 {
-	Sleep(1000);
+//	Sleep(1000);
 
 	ConvManager* pManager = (ConvManager*)lpParam;
 	if (pManager != NULL)
@@ -28,7 +28,13 @@ ConvManager::ConvManager()
 	m_convResult = CRS_SUCCESSED;
 }
 
-bool ConvManager::convert(ConvFileInfo &fileInfo, ConvOptions &options)
+void ConvManager::convertPage(int pageNo)
+{
+	m_convOptions.pageNo=pageNo;
+	m_engine.setEndPageNo(pageNo);
+}
+
+bool ConvManager::convert(ConvFileInfo &fileInfo, ConvOptions &options, void (*pageConverted)(int))
 {
 	//g_ConvManager = this;
 
@@ -37,10 +43,9 @@ bool ConvManager::convert(ConvFileInfo &fileInfo, ConvOptions &options)
 
 	m_convFile = fileInfo;
 	m_convOptions =  options;
-
+	m_pageConverted = pageConverted;
 	m_convResult = CRS_STARTED;
-	m_convertHandle = CreateThread( NULL, 0, 
-		CONVERT_THREAD, this, 0, NULL);
+	m_convertHandle = CreateThread( NULL, 0, CONVERT_THREAD, this, 0, NULL);
 
 	if ( m_convertHandle == NULL)
 		CloseHandle(m_convertHandle);
@@ -56,7 +61,7 @@ void ConvManager::stop()
 
 void ConvManager::run()
 {
-	m_convResult = m_engine.convertPDF(&m_convFile, &m_convOptions);
+	m_convResult = m_engine.convertPDF(&m_convFile, &m_convOptions, m_pageConverted);
 	m_convertHandle = NULL;
 }
 

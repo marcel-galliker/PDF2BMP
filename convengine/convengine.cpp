@@ -140,7 +140,7 @@ void ConvEngine::setStopFlag()
 /* working:			2012.09.10 ~
 /***************************************************************************************/
 
-int ConvEngine::convertPDF(ConvFileInfo *pdfFile, ConvOptions *convOpts)
+int ConvEngine::convertPDF(ConvFileInfo *pdfFile, ConvOptions *convOpts, void (*pageConverted)(int))
 {
 	int page_count = 0;
 	int result = CRS_SUCCESSED;
@@ -177,6 +177,7 @@ int ConvEngine::convertPDF(ConvFileInfo *pdfFile, ConvOptions *convOpts)
 		thread_param->pdfFile = pdfFile;
 		thread_param->convOpts = convOpts;
 		thread_param->classPtr = this;
+		thread_param->pageConverted = pageConverted;
 
 		m_result[iThread] = CRS_SUCCESSED;
 		g_fConvPercent[iThread] = 0;
@@ -208,6 +209,11 @@ int ConvEngine::convertPDF(ConvFileInfo *pdfFile, ConvOptions *convOpts)
 	}
 
 	return result;
+}
+
+void ConvEngine::setEndPageNo(int pageNo)
+{
+	m_endPageNo = pageNo;
 }
 
 void ConvEngine::convertPageFromThread(LPST_CONV_PAGE convParam)
@@ -297,21 +303,32 @@ void ConvEngine::convertPageFromThread(LPST_CONV_PAGE convParam)
 
 	base_try(((base_context *)m_pPDFCtx[convParam->threadId]))
 	{
-		for (int i = convParam->startpageNumber; i < convParam->endpageNumber; i++)
+		int pageNo=convParam->pdfFile->startPageNumber+convParam->threadId;
+	//	for (int i = convParam->startpageNumber; i < convParam->endpageNumber; i++)
+		while(pageNo<convParam->pdfFile->pageCount)
 		{
-			if (g_bStopThread)
+			// wait
+			while(pageNo > m_endPageNo)
 			{
-				m_result[convParam->threadId] = CRS_STOPED;
-				break;
+				if (g_bStopThread)
+				{
+					m_result[convParam->threadId] = CRS_STOPED;
+					break;
+				}
+				Sleep(10);
 			}
+		//	g_fConvPercentMin[convParam->threadId] = 90 * (i - convParam->startpageNumber) / (convParam->endpageNumber - convParam->startpageNumber);
+		//	g_fConvPercentMax[convParam->threadId] = 90 * (i - convParam->startpageNumber + 1) / (convParam->endpageNumber - convParam->startpageNumber);
 
-			g_fConvPercentMin[convParam->threadId] = 90 * (i - convParam->startpageNumber) / (convParam->endpageNumber - convParam->startpageNumber);
-			g_fConvPercentMax[convParam->threadId] = 90 * (i - convParam->startpageNumber + 1) / (convParam->endpageNumber - convParam->startpageNumber);
+			// pageNo=g_page_list[i];
 
-			if ( !convertPage(convParam->pdfFile, g_page_list[i], convParam->convOpts, convParam->threadId, nLinearBuf, nNewPixelBuf, nErrorBuf) )
+			if ( !convertPage(convParam->pdfFile, pageNo, convParam->convOpts, convParam->threadId, nLinearBuf, nNewPixelBuf, nErrorBuf) )
 				base_throw((base_context *)m_pPDFCtx[convParam->threadId], "convert error at %d page", g_page_list[i]);
 
-			g_fConvPercentMin[convParam->threadId] = g_fConvPercentMax[convParam->threadId];
+		//	g_fConvPercentMin[convParam->threadId] = g_fConvPercentMax[convParam->threadId];
+			if (convParam->pageConverted!=NULL) convParam->pageConverted(pageNo);
+			pageNo += m_nCurThreadCnt;
+		//	TrPrintf(0, "Page %d Converted\n", i);
 		}
 	}
 	base_catch(((base_context *)m_pPDFCtx[convParam->threadId]))
@@ -433,7 +450,7 @@ bool ConvEngine::PDF2Image(ConvFileInfo *pdfFile, int pageno, ConvOptions *convO
 	g_fConvPercent[threadId] = fConvPercentMin + (fConvPercentMax - fConvPercentMin) * STEP_GENERATETABLE_PERCENT;
 
 	//swprintf(name, L"%s\\%s-%09d.bmp", pdfFile->dstPath, pdfFile->fileName, pdfFile->startNumber + (pageno - pdfFile->startPageNumber));
-	swprintf(name, L"%s\\%s-%09d.bmp", pdfFile->dstPath, PREFIX_BMP_NAME, pdfFile->startNumber + (pageno - pdfFile->startPageNumber));
+	swprintf(name, L"%s\\%s-%09d.bmp", pdfFile->dstPath, PREFIX_BMP_NAME, pageno%pdfFile->startNumber);
 
 	ret=base_write_bmp((base_context *)m_pPDFCtx[threadId], (base_pixmap *)m_pPDFImage[threadId], name, &m_pPtrBmpTotalBuffer[threadId], &m_nBmpTotalBufSize[threadId], &m_pPtrBmpLineBuffer[threadId], &m_nBmpLineBufsize[threadId], pLinearBuf, pNewPixelBuf, pErrorBuf, convOpts->convertmode, convOpts->convertsplit);
 	if ( ret != 0){

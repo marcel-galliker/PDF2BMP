@@ -64,6 +64,7 @@ typedef struct
 	int convertmode;
 	int convertsplit;
 	int	threadCnt;
+	int pageNo;
 } ConvOptions;
 
 // bound box info

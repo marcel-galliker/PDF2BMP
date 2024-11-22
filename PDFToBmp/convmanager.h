@@ -10,7 +10,8 @@ class ConvManager
 public:
 	ConvManager();
 
-	bool convert(ConvFileInfo &convFiles, ConvOptions &options);
+	bool convert(ConvFileInfo &convFiles, ConvOptions &options,void (*pageConverted)(int));
+	void convertPage(int pageNo);
     void stop();
     int getPDFPageCount(wchar_t *srcPath);
 	int getConvResult() { return m_convResult; }
@@ -26,6 +27,8 @@ private:
 	ConvOptions		m_convOptions;
 	ConvEngine		m_engine;
 	int				m_convResult;
+
+	void (*m_pageConverted)(int);
 
 	HANDLE			m_convertHandle;
 };

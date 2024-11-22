@@ -17,6 +17,8 @@ typedef struct _ST_CONV_PAGE
 	ConvOptions *convOpts;
 
 	void *classPtr;
+//	void (*TrPrintf) (int level, char *format, ...);
+	void (*pageConverted)(int no);
 } ST_CONV_PAGE, *LPST_CONV_PAGE;
 
 class ConvEngine
@@ -25,9 +27,10 @@ public:
     ConvEngine(wchar_t* path);
     ~ConvEngine();
 
-	int convertPDF(ConvFileInfo *pdfFile, ConvOptions *convOpts);
+	int convertPDF(ConvFileInfo *pdfFile, ConvOptions *convOpts, void (*pageConverted)(int));
     int getPDFPageCount(wchar_t *srcPath);
 
+	void setEndPageNo(int pageNo);
 	void setStopFlag();
 	void convertPageFromThread(LPST_CONV_PAGE convParam);
 
@@ -80,6 +83,7 @@ private:
 	HANDLE		m_pThreadHandle[MAX_THREAD_COUNT];
 	int			m_result[MAX_THREAD_COUNT];
 
+	int			m_endPageNo;
 	int			m_nCurThreadCnt;
 };
 
